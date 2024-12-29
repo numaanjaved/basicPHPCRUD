@@ -27,15 +27,8 @@
 
 <body>
 
-    <header class="header d-flex justify-content-center align-items-center">
-        <nav class="navbar d-flex justify-content-between align-items-center">
-            <div class="logo d-flex justify-content-center align-items-center gap-2"> <i
-                    class="fa-solid fa-address-card"></i>
-                <span class="logoName">Profiles</span>
-            </div>
-            <button class="btn btn-danger logout_btn">Logout</button>
-        </nav>
-    </header>
+    <?php require_once "./partials/navbar.php"; ?>
+
     <main class="main">
         <div class="notifications_container d-flex flex-column gap-2"></div>
         <section class="data_input_section d-flex justify-content-center align-items-center w-100">

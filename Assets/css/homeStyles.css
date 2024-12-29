@@ -1,10 +1,29 @@
 .header {
   height: 9rem;
-  background-color: var(--sky-blue);
+  background-color: var(--sky-blue) !important;
   width: 100%;
   .navbar {
     height: 100%;
     width: 100%;
+    background-color: var(--sky-blue) !important;
+    & .navLinks {
+      font-size: 1.8rem;
+      color: var(--primary-font-color);
+      font-weight: 500;
+      font-family: "poppins", sans-serif;
+    }
+    & .activeLink {
+      font-size: 1.8rem;
+      font-weight: 500;
+      font-family: "poppins", sans-serif;
+      background-color: var(--primary-font-color);
+      color: var(--light-sky);
+      border-radius: 0.5rem;
+      -webkit-border-radius: 0.5rem;
+      -moz-border-radius: 0.5rem;
+      -ms-border-radius: 0.5rem;
+      -o-border-radius: 0.5rem;
+    }
     .logo {
       > .fa-address-card {
         font-size: 6rem;
