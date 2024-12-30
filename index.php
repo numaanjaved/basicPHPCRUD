@@ -20,7 +20,17 @@
     </div>
 
     <?php
-    header("location: ./Assets/views/home.view.php");
+
+
+
+    if ($_SERVER['REQUEST_URI'] == "/basicPHPCRUD/home") {
+        require_once "./Assets/controllers/home.php";
+    } else {
+        echo "Not found 404";
+    }
+    var_dump($_SERVER['REQUEST_URI']);
+    // require_once "./Assets/views/home.view.php";
+    // header("location: ./Assets/views/home.view.php");
     ?>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
