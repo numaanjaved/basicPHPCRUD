@@ -1,11 +1,14 @@
 <?php
 views("partials/head.php");
-views("partials/navbar.php"); ?>
+views("partials/navbar.php");
+dd($_SERVER['REQUEST_METHOD']);
+// die();
+?>
 
 <main class="main">
     <div class="notifications_container d-flex flex-column gap-2"></div>
     <section class="data_input_section d-flex justify-content-center align-items-center w-100">
-        <form novalidate class="data_form d-flex flex-row justify-content-center align-items-center w-100">
+        <form novalidate method="POST" action="/basicPHPCRUD/" class="data_form d-flex flex-row justify-content-center align-items-center w-100">
             <div
                 class="form_profile_picture_container d-flex justify-content-evenly align-items-center border flex-column">
                 <div class="image_input d-flex justify-content-center align-items-center w-100 flex-column">
