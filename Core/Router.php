@@ -22,10 +22,12 @@ class Router
     }
     public function route($uri, $method)
     {
+        dd($this->routes);
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri) {
                 require_once($route['controller']);
-                die();
+                // die();
+                dd($route['uri']);
             }
         }
     }
