@@ -6,8 +6,8 @@ if (file_exists(BASE_PATH . 'Core/functions.php')) {
 } else {
     echo 'Functions File Not Found';
 }
-if (file_exists(BASE_PATH . 'Assets/views/loading.php')) {
-    require_once(BASE_PATH . 'Assets/views/loading.php');
+if (file_exists(basePath('Assets/views/loading.php'))) {
+    require_once(basePath('Assets/views/loading.php'));
 } else {
     echo 'Loading File Not Found';
 }

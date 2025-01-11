@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="<?= BASE_PATH . 'Assets/images/favicon/favicon-16x16.png' ?>" type="image/x-icon">
-    <link rel="shortcut icon" href="<?= BASE_PATH . 'Assets/images/favicon/favicon-32x32.png' ?>" type="image/x-icon" type="image/x-icon">
-    <link rel="stylesheet" href="<?= BASE_PATH . 'Assets/css/indexStyles.css' ?>">
+    <link rel="shortcut icon" href="<?= basePath('Assets/images/favicon/favicon-16x16.png') ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= basePath('Assets/images/favicon/favicon-32x32.png') ?>" type="image/x-icon" type="image/x-icon">
+    <link rel="stylesheet" href="<?= basePath('Assets/css/indexStyles.css') ?>">
     <title>CRUD Application</title>
 </head>
 
