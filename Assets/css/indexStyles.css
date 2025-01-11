@@ -5,7 +5,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff;
+  background-color: #1c1c1c;
 }
 
 .loader {
@@ -13,7 +13,7 @@ body {
   vertical-align: middle;
   position: relative;
   display: flex;
-  background: white;
+  background-color: #1c1c1c;
   padding: 150px;
 }
 
