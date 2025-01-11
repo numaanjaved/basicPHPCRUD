@@ -1,6 +1,6 @@
 <?php
-require_once './partials/head.php';
-require_once './partials/navbar.php';
+views('partials/head.php');
+views('partials/navbar.php');
 ?>
 <section class="user_data_section w-100 d-flex justify-content-center align-items-center">
     <div class="user_data_main_container w-100 d-flex flex-column justify-content-center align-items-center">
@@ -26,5 +26,5 @@ require_once './partials/navbar.php';
     </div>
 </section>
 <?php
-require_once './partials/footer.php';
+views('partials/footer.php');
 ?>
