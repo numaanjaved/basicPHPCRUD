@@ -9,5 +9,5 @@ function dd($value)
 };
 function basePath($path)
 {
-    return BASE_PATH . $path;
+    return $path;
 };
