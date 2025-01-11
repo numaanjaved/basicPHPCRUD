@@ -1,6 +1,6 @@
 <?php
-require_once "./partials/head.php";
-require_once "./partials/navbar.php"; ?>
+views("partials/head.php");
+views("partials/navbar.php"); ?>
 
 <main class="main">
     <div class="notifications_container d-flex flex-column gap-2"></div>
@@ -19,7 +19,7 @@ require_once "./partials/navbar.php"; ?>
                 </div>
                 <div
                     class="profile_picture_display_container d-flex justify-content-center align-items-center overflow-hidden">
-                    <img src="../../Assets/images/default_profile.png" alt="Default Profile Picture" id="form_img"
+                    <img src="Assets/images/default_profile.png" alt="Default Profile Picture" id="form_img"
                         class="w-100 h-100" name="profile_img">
                 </div>
             </div>
@@ -92,5 +92,4 @@ require_once "./partials/navbar.php"; ?>
         </form>
     </section>
 </main>
-<?php
-require_once "./partials/footer.php"; ?>
+<?php views("partials/footer.php") ?>

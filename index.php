@@ -24,9 +24,8 @@ $uri = trim(parse_url($_SERVER['REQUEST_URI'])['path']);
 $method = $_SERVER['REQUEST_METHOD'];
 $router->route($uri, $method);
 
-
-// if (file_exists(basePath('Assets/views/loading.php'))) {
-//     require_once(basePath('Assets/views/loading.php'));
-// } else {
-//     echo 'Loading File Not Found';
-// }
+if (file_exists(basePath('Assets/views/loading.php'))) {
+    require_once(basePath('Assets/views/loading.php'));
+} else {
+    echo 'Loading File Not Found';
+}

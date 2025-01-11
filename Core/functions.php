@@ -11,3 +11,8 @@ function basePath($path)
 {
     return $path;
 };
+
+function views($path)
+{
+    return require_once("Assets/views/{$path}");
+}

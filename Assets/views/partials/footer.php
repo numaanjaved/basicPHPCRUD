@@ -1,5 +1,5 @@
 <footer class="footer d-flex justify-content-center align-items-center">
-    <p class="footerText"></p>
+    <p class="footerText">&copy;copyright Codesty Games | All Rights Reserved</p>
 </footer>
 
 <!-- scripts section -->
