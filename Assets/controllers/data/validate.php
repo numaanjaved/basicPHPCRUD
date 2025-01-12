@@ -9,12 +9,12 @@ $lastName = htmlspecialchars($_POST['user_Lname']);
 $email = htmlspecialchars($_POST['user_email']);
 $contact = htmlspecialchars($_POST['user_contact']);
 $address = htmlspecialchars($_POST['user_address']);
-$userType = htmlspecialchars($_POST['select_user']);
 $bio = htmlspecialchars($_POST['user_bio']);
+$userType = htmlspecialchars($_POST['select_user']);
 $adminName = htmlspecialchars($_POST['admin_name']);
 $adminPassword = htmlspecialchars($_POST['admin_password']);
 
-function Validate($firstName, $lastName, $email, $contact, $bio)
+function Validate($firstName, $lastName, $email, $contact, $bio, $userType, $adminName = null, $adminPassword = null)
 {
     $validationCheck = true;
     $validation = new Validate();
@@ -33,6 +33,16 @@ function Validate($firstName, $lastName, $email, $contact, $bio)
     if (!$validation->Validator($bio, 10, 300, '/^[a-zA-Z0-9\s.,!?"\'\-\(\)&\n]+$/')) {
         $validationCheck = false;
     }
+    if ($userType === 'Admin') {
+        if (!$validation->Validator($adminName, 1, 50, '/^[A-Za-z]+(?:[- ][A-Za-z]+)*$/')) {
+            echo "Please Enter Admin Name";
+            $validationCheck = false;
+        }
+        if (!$validation->Validator($adminPassword, 1, 50, '/^[A-Za-z]+(?:[- ][A-Za-z]+)*$/')) {
+            echo "Please Enter Admin Password";
+            $validationCheck = false;
+        }
+    }
     return $validationCheck;
 }
-dd(Validate($firstName, $lastName, $email, $contact, $bio));
+dd(Validate($firstName, $lastName, $email, $contact, $bio, $userType));
