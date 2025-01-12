@@ -4,7 +4,26 @@ views("partials/navbar.php");
 ?>
 
 <main class="main">
-    <div class="notifications_container d-flex flex-column gap-2"></div>
+    <div class="notifications_container d-flex flex-column gap-2">
+        <div class="errors_container d-flex flex-column gap-2"></div>
+        <?php if (isset($_SESSION['errors'])): ?>
+            <?php
+            $containerId = 0;
+            foreach ($_SESSION['errors'] as $errMsg):
+                $containerId += 1;
+            ?>
+                <div class="err_notification_container <?= 'cont' . $containerId ?>" id="<?= 'errNotificationContainer' . $containerId ?>">
+                    <div class="err_text_container errorCustom <?= 'errTextCont' . $containerId ?>">
+                        <h3 class="notification_err_heading"><?= htmlspecialchars($errMsg) ?></h3>
+                        <button class="err_notification_close_btn" id="errNotificationCloseBtn" type="button"><i i class="fa-solid fa-circle-xmark"></i></button>
+                    </div>
+
+                </div>
+            <?php endforeach;
+            unset($_SESSION['errors']); ?>
+        <?php endif; ?>
+
+    </div>
     <section class="data_input_section d-flex justify-content-center align-items-center w-100">
         <form novalidate method="POST" action="/basicPHPCRUD/" enctype="multipart/form-data" class="data_form d-flex flex-row justify-content-center align-items-center w-100">
             <div

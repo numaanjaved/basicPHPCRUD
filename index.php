@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (file_exists('Core/functions.php')) {
     require_once('Core/functions.php');
 } else {

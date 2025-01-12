@@ -50,6 +50,9 @@ function Validate($firstName, $lastName, $email, $contact, $address, $bio, $user
 
 if (Validate($firstName, $lastName, $email, $contact,   $address, $bio, $userType)) {
     store($firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword);
+    header('location:/basicPHPCRUD/');
+    exit();
 } else {
-    dd('Validation Error');
+    header('location:/basicPHPCRUD/');
+    exit();
 }

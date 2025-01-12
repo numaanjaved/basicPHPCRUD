@@ -2,22 +2,29 @@
 
 namespace Core;
 
+if (isset($_SESSION['errors'])) {
+    unset($_SESSION['errors']);
+}
 class Validate
 {
-
+    protected $errors = [];
     public function Validator($string, $min, $max, $regex)
     {
         $validationCheck = true;
         if (!$this->nullValidator($string)) {
+            $this->errors[] = "Please Fill Data in the Field.";
             $validationCheck = false;
         } else {
             if (!$this->regexValidator($string, $regex)) {
+                $this->errors[] = "Please Enter Valid Data.";
                 $validationCheck = false;
             }
             if (!$this->lengthValidator($string, $min, $max)) {
+                $this->errors[] = "Please Enter Limited Data.";
                 $validationCheck = false;
             }
         }
+        $_SESSION['errors'] = $this->errors;
         return $validationCheck;
     }
     protected function nullValidator($string)
