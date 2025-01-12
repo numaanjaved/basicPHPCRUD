@@ -47,23 +47,20 @@ views("partials/navbar.php");
                 <div class="form_text_content_container w-100 d-flex flex-row justify-content-between">
                     <div class="type_input_container d-flex flex-column">
                         <label class="text_form_labels" for="user_Fname">First Name</label>
-                        <input type="text" class="user_inputs" id="user_Fname" name="user_Fname" autocomplete="off"
-                            placeholder="e.g., John">
+                        <input type="text" class="user_inputs" id="user_Fname" name="user_Fname" autocomplete="off" placeholder="e.g., John" value="<?= $_SESSION['inputs']['firstName'] ?? '' ?>">
 
                         <label class="text_form_labels" for="user_Lname">Last Name</label>
-                        <input type="text" class="user_inputs" id="user_Lname" name="user_Lname" autocomplete="off"
-                            placeholder="e.g., Smith">
+                        <input type="text" class="user_inputs" id="user_Lname" name="user_Lname" autocomplete="off" placeholder="e.g., Smith" value="<?= $_SESSION['inputs']['lastName'] ?? '' ?>">
                         <label class="text_form_labels" for="user_email">Email</label>
-                        <input type="email" class="user_inputs" id="user_email" name="user_email" autocomplete="off"
-                            placeholder="e.g., johnsmith@gmail.com">
+                        <input type="email" class="user_inputs" id="user_email" name="user_email" autocomplete="off" placeholder="e.g., johnsmith@gmail.com" value="<?= $_SESSION['inputs']['email'] ?? '' ?>">
 
                         <label class="text_form_labels" for="user_contact">Contact Number</label>
                         <input type="tel" class="user_inputs" id="user_contact" name="user_contact"
-                            autocomplete="off" placeholder="e.g., 921234567890">
+                            autocomplete="off" placeholder="e.g., 921234567890" value="<?= $_SESSION['inputs']['contact'] ?? '' ?>">
 
                         <label class="text_form_labels" for="user_address">Address</label>
                         <input type="text" class="user_inputs" id="user_address" name="user_address"
-                            autocomplete="off" placeholder="e.g., 123 Elm St, Springfield, IL">
+                            autocomplete="off" placeholder="e.g., 123 Elm St, Springfield, IL" value="<?= $_SESSION['inputs']['address'] ?? '' ?>">
                         <div class="select_container d-flex flex-column">
                             <label for="select_user" id="choose_user_heading" class="text_form_labels">Choose User
                                 Type</label>
@@ -77,7 +74,7 @@ views("partials/navbar.php");
 
                         <label class="text_form_labels" for="user_address">Profile Description</label>
                         <textarea name="user_bio" id="user_bio" spellcheck="false" autocomplete="off"
-                            placeholder="Write 250-300 characters" class="user_bio_input"></textarea>
+                            placeholder="Write 250-300 characters" class="user_bio_input"><?= $_SESSION['inputs']['bio'] ?? '' ?></textarea>
                         <div class="textAreaInfoMsgContainer d-flex justify-content-between align-items-center">
                             <span class="limit_exceed_text"></span>
                             <span class="limit_text">0/300</span>

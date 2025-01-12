@@ -1,5 +1,5 @@
 <?php
-
+unset($_SESSION['inputs']);
 require_once('Core/Validate.php');
 require_once('Assets/models/store.php');
 
@@ -53,6 +53,17 @@ if (Validate($firstName, $lastName, $email, $contact,   $address, $bio, $userTyp
     header('location:/basicPHPCRUD/');
     exit();
 } else {
+    $_SESSION['inputs'] = [
+        'firstName' =>  $firstName,
+        'lastName' => $lastName,
+        'email' =>  $email,
+        'contact' =>  $contact,
+        'address' => $address,
+        'bio' =>  $bio,
+        'userType' =>  $userType,
+        'adminName' =>  $adminName,
+        'adminPwd' =>  $adminPassword,
+    ];
     header('location:/basicPHPCRUD/');
     exit();
 }
