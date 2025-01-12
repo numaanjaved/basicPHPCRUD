@@ -25,7 +25,14 @@
     <link rel="stylesheet" href="Assets/css/alertError.css">
     <link rel="stylesheet" href="Assets/css/navbarStyles.css">
 
-    <title>CRUD |</title>
+    <title>CRUD | <?php
+                    if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/' || $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/home') {
+                        echo "Home Page";
+                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/records') {
+                        echo "Users Record";
+                    }
+
+                    ?></title>
 </head>
 
 <body>
