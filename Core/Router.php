@@ -28,5 +28,12 @@ class Router
                 exit();
             }
         }
+        $this->abort(404);
+    }
+    protected function abort($code = 404)
+    {
+        http_response_code($code);
+        views("{$code}.php");
+        die();
     }
 }
