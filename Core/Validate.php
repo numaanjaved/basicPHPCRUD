@@ -24,7 +24,7 @@ class Validate
     {
         $validationCheck = true;
         $string = trim($string);
-        if (empty($string) || $string === null || strlen($string) <= 0) {
+        if (empty($string) || strlen($string) <= 0) {
             $validationCheck = false;
         }
         return $validationCheck;

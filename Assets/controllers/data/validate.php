@@ -1,6 +1,7 @@
 <?php
 
 require_once('Core/Validate.php');
+require_once('Assets/models/store.php');
 
 use Core\Validate;
 
@@ -14,7 +15,7 @@ $userType = htmlspecialchars($_POST['select_user']);
 $adminName = htmlspecialchars($_POST['admin_name']);
 $adminPassword = htmlspecialchars($_POST['admin_password']);
 
-function Validate($firstName, $lastName, $email, $contact, $bio, $userType, $adminName = null, $adminPassword = null)
+function Validate($firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)
 {
     $validationCheck = true;
     $validation = new Validate();
@@ -30,7 +31,10 @@ function Validate($firstName, $lastName, $email, $contact, $bio, $userType, $adm
     if (!$validation->Validator($contact, 5, 20, '/^\+?[0-9]+$/')) {
         $validationCheck = false;
     }
-    if (!$validation->Validator($bio, 10, 300, '/^[a-zA-Z0-9\s.,!?"\'\-\(\)&\n]+$/')) {
+    if (!$validation->Validator($address, 1, 255, "/^[a-zA-Z0-9\s,.'-]*$/")) {
+        $validationCheck = false;
+    }
+    if (!$validation->Validator($bio, 1, 300, '/^[a-zA-Z0-9\s.,!?"\'\-\(\)&\n]+$/')) {
         $validationCheck = false;
     }
     if ($userType === 'Admin') {
@@ -43,4 +47,9 @@ function Validate($firstName, $lastName, $email, $contact, $bio, $userType, $adm
     }
     return $validationCheck;
 }
-dd(Validate($firstName, $lastName, $email, $contact, $bio, $userType));
+
+if (Validate($firstName, $lastName, $email, $contact,   $address, $bio, $userType)) {
+    store($firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword);
+} else {
+    dd('Validation Error');
+}
