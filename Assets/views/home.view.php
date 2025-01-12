@@ -1,8 +1,6 @@
 <?php
 views("partials/head.php");
 views("partials/navbar.php");
-dd($_SERVER['REQUEST_METHOD']);
-// die();
 ?>
 
 <main class="main">
