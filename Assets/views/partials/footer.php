@@ -1,5 +1,5 @@
 <footer class="footer d-flex justify-content-center align-items-center">
-    <p class="footerText">&copy;copyright Codesty Games | All Rights Reserved</p>
+    <p class="footerText">&copy; Codesty Games 2025 | All Rights Reserved</p>
 </footer>
 
 <!-- scripts section -->
@@ -9,6 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="Assets/javascript/views/form/charLength.js" type="module"></script>
+<script src="Assets/javascript/views/form/adminCredentials.js" type="module"></script>
 </body>
 
 </html>
