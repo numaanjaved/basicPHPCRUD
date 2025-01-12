@@ -34,12 +34,10 @@ function Validate($firstName, $lastName, $email, $contact, $bio, $userType, $adm
         $validationCheck = false;
     }
     if ($userType === 'Admin') {
-        if (!$validation->Validator($adminName, 1, 50, '/^[A-Za-z]+(?:[- ][A-Za-z]+)*$/')) {
-            echo "Please Enter Admin Name";
+        if (!$validation->Validator($adminName, 1, 50, "/^[a-zA-Z0-9_]$/")) {
             $validationCheck = false;
         }
-        if (!$validation->Validator($adminPassword, 1, 50, '/^[A-Za-z]+(?:[- ][A-Za-z]+)*$/')) {
-            echo "Please Enter Admin Password";
+        if (!$validation->Validator($adminPassword, 7, 255, "/^[a-zA-Z0-9@#$&_\-+\/\\\\]$/")) {
             $validationCheck = false;
         }
     }
