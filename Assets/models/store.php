@@ -18,7 +18,7 @@ function fetchAll()
 }
 function fetchId()
 {
-    $IdsArr = [['user_id' => 'prof0'],];
+    $IdsArr = [['user_id' => 'prof000'],];
     $config = require('Core/config.php');
     $db = new Database($config['database'], 'root', '');
     $query = 'SELECT `user_id` FROM `records`;';
@@ -35,7 +35,7 @@ function extractIdDigit()
     $UserIdsArr = fetchId();
     foreach ($UserIdsArr as $record) {
         $idString = $record['user_id'];
-        $result = str_replace('prof', '', $idString);
+        $result = str_replace('prof00', '', $idString);
         $idArr[] = $result;
     }
     return $idArr;
@@ -52,7 +52,7 @@ function newId()
             $maxNum = $numArr[$i];
         };
     }
-    $newId = 'prof' . $maxNum + 1;
+    $newId = 'prof00' . $maxNum + 1;
     return $newId;
 }
 function store($firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)

@@ -2,7 +2,6 @@
 views('partials/head.php');
 views('partials/navbar.php');
 require('Assets/models/store.php');
-dd(fetchAll());
 ?>
 <section class="user_data_section w-100 d-flex justify-content-center align-items-center">
     <div class="user_data_main_container w-100 d-flex flex-column justify-content-center align-items-center">
@@ -22,23 +21,30 @@ dd(fetchAll());
                 </div>
             </div>
             <div class="individual_user_data_container position-relative w-100 d-flex justify-content-start flex-column align-items-center">
-                <div class="individual_user_data w-100 d-flex justify-content-between align-items-center">
-                    <div class="text_record d-flex justify-content-evenly align-items-center">
-                        <div class="user_profile_data d-flex justify-content-center align-items-center">
-                            <figure class="profile_img_container">
-                                <img class="user_profile_img" src="" alt="Profile Picture">
-                            </figure>
+                <?php if (is_array(fetchAll())): ?>
+                    <?php foreach (fetchAll() as  $record):  ?>
+
+                        <div class="individual_user_data w-100 d-flex justify-content-between align-items-center">
+                            <div class="text_record d-flex justify-content-evenly align-items-center">
+                                <div class="user_profile_data d-flex justify-content-center align-items-center">
+                                    <figure class="profile_img_container">
+                                        <img class="user_profile_img" src="" alt="Profile Picture">
+                                    </figure>
+                                </div>
+                                <p class="user_profile_data" id="user_id"><?= $record['user_id'] ?></p>
+                                <p class="user_profile_data" id="user_fullName_data"><?= $record['username'] ?></p>
+                                <p class="user_profile_data" id="user_type_data"><?= $record['user_type'] ?></p>
+                            </div>
+                            <div class="profile_btns_container d-flex justify-content-evenly flex-row align-items-center">
+                                <button class="Ops_Buttons btn btn-success" id="read_btn">Read</button>
+                                <button class="Ops_Buttons btn btn-primary" id="update">Update</button>
+                                <button class="Ops_Buttons btn btn-danger" id="delete">Delete</button>
+                            </div>
                         </div>
-                        <p class="user_profile_data" id="user_id"></p>
-                        <p class="user_profile_data" id="user_fullName_data"></p>
-                        <p class="user_profile_data" id="user_type_data"></p>
-                    </div>
-                    <div class="profile_btns_container d-flex justify-content-evenly flex-row align-items-center">
-                        <button class="Ops_Buttons btn btn-success" id="read_btn">Read</button>
-                        <button class="Ops_Buttons btn btn-primary" id="update">Update</button>
-                        <button class="Ops_Buttons btn btn-danger" id="delete">Delete</button>
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="text text-warning fs-1 fw-semibold">No Records Found.</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>
