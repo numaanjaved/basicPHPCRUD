@@ -4,15 +4,56 @@ require_once('Core/Database.php');
 
 use Core\Database;
 
-function store($firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null,)
+
+function fetchId()
 {
-    $userId = 'prof1';
-    $username = $firstName . $lastName;
+    $IdsArr = [['user_id' => 'prof0'],];
+    $config = require('Core/config.php');
+    $db = new Database($config['database'], 'root', '');
+    dd($config);
+    $query = 'SELECT `user_id` from `records`;';
+    $statement =  $db->query($query);
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    if (!empty($result)) {
+        $IdsArr = $result;
+    };
+    return $IdsArr;
+}
+function extractIdDigit()
+{
+    $idArr = [];
+    $UserIdsArr = fetchId();
+    foreach ($UserIdsArr as $record) {
+        $idString = $record['user_id'];
+        $result = str_replace('prof', '', $idString);
+        $idArr[] = $result;
+    }
+    return $idArr;
+}
+function newId()
+{
+    $maxNum = 0;
+    $numArr = extractIdDigit();
+    if (empty($numArr)) {
+        throw new Exception("No IDs found in the database.");
+    }
+    for ($i = 0; $i < count($numArr); $i++) {
+        if ($numArr[$i] > $maxNum) {
+            $maxNum = $numArr[$i];
+        };
+    }
+    $newId = 'prof' . $maxNum + 1;
+    return $newId;
+}
+function store($firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)
+{
+    $userId = (string)newId();
+    $username = "{$firstName} {$lastName}";
     $hashedPwd = null;
     if ($adminPassword !== null) {
         $hashedPwd = password_hash($adminPassword, PASSWORD_BCRYPT);
     }
-    $config = require_once('Core/config.php');
+    $config = require('Core/config.php');
     $db = new Database($config['database'], 'root', '');
     $query = 'INSERT INTO `records`(user_id, username, email, contact, address, bio, user_type, admin_name, admin_password)VALUES(:userId, :userName, :email, :contact, :address, :bio, :userType, :adminName, :adminPwd)';
     $params = [':userId' => $userId, ':userName' => $username, ':email' => $email, ':contact' => $contact, ':address' => $address, ':bio' => $bio, ':userType' => $userType, ':adminName' => $adminName, ':adminPwd' => $hashedPwd];
