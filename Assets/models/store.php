@@ -4,14 +4,24 @@ require_once('Core/Database.php');
 
 use Core\Database;
 
-
+function fetchAll()
+{
+    $config = require('Core/config.php');
+    $db = new Database($config['database'], 'root', '');
+    $query = 'SELECT * FROM `records`;';
+    $statement =  $db->query($query);
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    if (empty($result)) {
+        $result = "No record Found";
+    };
+    return $result;
+}
 function fetchId()
 {
     $IdsArr = [['user_id' => 'prof0'],];
     $config = require('Core/config.php');
     $db = new Database($config['database'], 'root', '');
-    dd($config);
-    $query = 'SELECT `user_id` from `records`;';
+    $query = 'SELECT `user_id` FROM `records`;';
     $statement =  $db->query($query);
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     if (!empty($result)) {
