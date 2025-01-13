@@ -28,7 +28,7 @@ require('Assets/models/store.php');
                             <div class="text_record d-flex justify-content-evenly align-items-center">
                                 <div class="user_profile_data d-flex justify-content-center align-items-center">
                                     <figure class="profile_img_container">
-                                        <img class="user_profile_img" src="" alt="Profile Picture">
+                                        <img class="user_profile_img" src="<?= $record['image_path'] ?>" alt="Profile Picture">
                                     </figure>
                                 </div>
                                 <p class="user_profile_data" id="user_id"><?= $record['user_id'] ?></p>

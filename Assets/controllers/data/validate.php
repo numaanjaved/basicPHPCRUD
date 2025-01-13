@@ -14,11 +14,15 @@ $bio = htmlspecialchars($_POST['user_bio']);
 $userType = htmlspecialchars($_POST['select_user']);
 $adminName = htmlspecialchars($_POST['admin_name']);
 $adminPassword = htmlspecialchars($_POST['admin_password']);
+$image = 'image';
 
-function Validate($firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)
+$validation = new Validate();
+function Validate($validation, $image, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)
 {
     $validationCheck = true;
-    $validation = new Validate();
+    if (!$validation->imageValidation($image)['validationCheck']) {
+        $validationCheck = false;
+    }
     if (!$validation->Validator($firstName, 1, 50, '/^[A-Za-z]+(?:[- ][A-Za-z]+)*$/')) {
         $validationCheck = false;
     }
@@ -48,8 +52,10 @@ function Validate($firstName, $lastName, $email, $contact, $address, $bio, $user
     return $validationCheck;
 }
 
-if (Validate($firstName, $lastName, $email, $contact,   $address, $bio, $userType, $adminName, $adminPassword)) {
-    store($firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword);
+if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $address, $bio, $userType, $adminName, $adminPassword)) {
+    $imageName = $validation->imageValidation('image')['imageName'];
+    $imagePath = $validation->imageValidation('image')['imagePath'];
+    store($imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword);
     header('location:/basicPHPCRUD/');
     exit();
 } else {

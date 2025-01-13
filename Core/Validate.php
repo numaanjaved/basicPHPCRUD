@@ -55,4 +55,21 @@ class Validate
         }
         return $validationCheck;
     }
+    public function imageValidation($imageName)
+    {
+        $validationCheck = true;
+        if (isset($_FILES[$imageName])) {
+            $fileName = $_FILES[$imageName]['name'];
+            $fileTempName = $_FILES[$imageName]['tmp_name'];
+            $uploadDir = 'uploads/' . $fileName;
+            move_uploaded_file($fileTempName, $uploadDir);
+        } else {
+            $validationCheck = false;
+        }
+        return [
+            'validationCheck' => $validationCheck,
+            'imageName' => $fileTempName,
+            'imagePath' => $uploadDir
+        ];
+    }
 }

@@ -55,7 +55,7 @@ function newId()
     $newId = 'prof00' . $maxNum + 1;
     return $newId;
 }
-function store($firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)
+function store($imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)
 {
     $userId = (string)newId();
     $username = "{$firstName} {$lastName}";
@@ -65,7 +65,7 @@ function store($firstName, $lastName, $email, $contact, $address, $bio, $userTyp
     }
     $config = require('Core/config.php');
     $db = new Database($config['database'], 'root', '');
-    $query = 'INSERT INTO `records`(user_id, username, email, contact, address, bio, user_type, admin_name, admin_password)VALUES(:userId, :userName, :email, :contact, :address, :bio, :userType, :adminName, :adminPwd)';
-    $params = [':userId' => $userId, ':userName' => $username, ':email' => $email, ':contact' => $contact, ':address' => $address, ':bio' => $bio, ':userType' => $userType, ':adminName' => $adminName, ':adminPwd' => $hashedPwd];
+    $query = 'INSERT INTO `records`(user_id, image_path, image_name, username, email, contact, address, bio, user_type, admin_name, admin_password)VALUES(:userId, :imagePath, :imageName, :userName, :email, :contact, :address, :bio, :userType, :adminName, :adminPwd)';
+    $params = [':userId' => $userId, ':imagePath' => $imagePath, ':imageName' => $imageName, ':userName' => $username, ':email' => $email, ':contact' => $contact, ':address' => $address, ':bio' => $bio, ':userType' => $userType, ':adminName' => $adminName, ':adminPwd' => $hashedPwd];
     $db->query($query, $params);
 }
