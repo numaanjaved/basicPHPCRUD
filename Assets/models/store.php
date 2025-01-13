@@ -49,8 +49,8 @@ function store($firstName, $lastName, $email, $contact, $address, $bio, $userTyp
 {
     $userId = (string)newId();
     $username = "{$firstName} {$lastName}";
-    $hashedPwd = null;
-    if ($adminPassword !== null) {
+    $hashedPwd = '';
+    if ($adminPassword !== null && $adminPassword !== '') {
         $hashedPwd = password_hash($adminPassword, PASSWORD_BCRYPT);
     }
     $config = require('Core/config.php');
