@@ -2,12 +2,23 @@
 
 namespace Core;
 
+// require('Assets/models/admin.php');
+
+
 if (isset($_SESSION['errors'])) {
     unset($_SESSION['errors']);
 }
 class Validate
 {
     protected $errors = [];
+    public function adminValidator()
+    {
+        $adminCheck = false;
+        if (findAdmin()) {
+            $adminCheck = true;
+        }
+        return $adminCheck;
+    }
     public function Validator($string, $min, $max, $regex)
     {
         $validationCheck = true;

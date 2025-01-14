@@ -2,6 +2,7 @@
 unset($_SESSION['inputs']);
 require_once('Core/Validate.php');
 require_once('Assets/models/store.php');
+require('Assets/models/admin.php');
 
 use Core\Validate;
 
@@ -20,9 +21,6 @@ $validation = new Validate();
 function Validate($validation, $image, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)
 {
     $validationCheck = true;
-    if (!$validation->imageValidation($image)['validationCheck']) {
-        $validationCheck = false;
-    }
     if (!$validation->Validator($firstName, 1, 50, '/^[A-Za-z]+(?:[- ][A-Za-z]+)*$/')) {
         $validationCheck = false;
     }
@@ -48,6 +46,12 @@ function Validate($validation, $image, $firstName, $lastName, $email, $contact, 
         if (!$validation->Validator($adminPassword, 7, 255, "/^[a-zA-Z0-9_#@.&$]*$/")) {
             $validationCheck = false;
         }
+    }
+    if ($userType === 'Admin' && $validation->adminValidator()) {
+        $validationCheck = false;
+    }
+    if (!$validation->imageValidation($image)['validationCheck']) {
+        $validationCheck = false;
     }
     return $validationCheck;
 }
