@@ -60,7 +60,7 @@ if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $ad
     $imageName = $validation->imageValidation('image')['imageName'];
     $imagePath = $validation->imageValidation('image')['imagePath'];
     store($imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword);
-    header('location:/basicPHPCRUD/');
+    header('location:/basicPHPCRUD/records');
     exit();
 } else {
     $_SESSION['inputs'] = [

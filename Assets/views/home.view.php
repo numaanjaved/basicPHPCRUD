@@ -15,7 +15,7 @@ views("partials/navbar.php");
                 <div class="err_notification_container <?= 'cont' . $containerId ?>" id="<?= 'errNotificationContainer' . $containerId ?>">
                     <div class="err_text_container errorCustom <?= 'errTextCont' . $containerId ?>">
                         <h3 class="notification_err_heading"><?= htmlspecialchars($errors['attrName']) . ':' . ' ' . htmlspecialchars($errors['errMsg']) ?></h3>
-                        <button class="err_notification_close_btn" id="errNotificationCloseBtn" type="button"><i i class="fa-solid fa-circle-xmark"></i></button>
+                        <button class="err_notification_close_btn" id="errNotificationCloseBtn" type="button"><i class="fa-solid fa-circle-xmark"></i></button>
                     </div>
 
                 </div>
