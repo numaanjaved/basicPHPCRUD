@@ -2,9 +2,6 @@
 
 namespace Core;
 
-// require('Assets/models/admin.php');
-
-
 if (isset($_SESSION['errors'])) {
     unset($_SESSION['errors']);
 }
@@ -19,19 +16,28 @@ class Validate
         }
         return $adminCheck;
     }
-    public function Validator($string, $min, $max, $regex)
+    public function Validator($string, $min, $max, $regex, $attrName)
     {
         $validationCheck = true;
         if (!$this->nullValidator($string)) {
-            $this->errors[] = "Please Fill Data in the Field.";
+            $this->errors[] = [
+                'attrName' => $attrName,
+                'errMsg' => 'Please Fill Data in the Field.'
+            ];
             $validationCheck = false;
         } else {
-            if (!$this->regexValidator($string, $regex)) {
-                $this->errors[] = "Please Enter Valid Data.";
+            if (!$this->regexValidator($string, $regex, $attrName)) {
+                $this->errors[] = [
+                    'attrName' => $attrName,
+                    'errMsg' => 'Please Enter Valid Data.'
+                ];
                 $validationCheck = false;
             }
-            if (!$this->lengthValidator($string, $min, $max)) {
-                $this->errors[] = "Please Enter Limited Data.";
+            if (!$this->lengthValidator($string, $min, $max, $attrName)) {
+                $this->errors[] = [
+                    'attrName' => $attrName,
+                    'errMsg' => "Please Enter Min {$min} and Max {$max} Characters"
+                ];
                 $validationCheck = false;
             }
         }

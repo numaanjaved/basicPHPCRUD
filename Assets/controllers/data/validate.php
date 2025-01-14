@@ -21,29 +21,29 @@ $validation = new Validate();
 function Validate($validation, $image, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)
 {
     $validationCheck = true;
-    if (!$validation->Validator($firstName, 1, 50, '/^[A-Za-z]+(?:[- ][A-Za-z]+)*$/')) {
+    if (!$validation->Validator($firstName, 1, 50, '/^[A-Za-z]+(?:[- ][A-Za-z]+)*$/', 'First Name')) {
         $validationCheck = false;
     }
-    if (!$validation->Validator($lastName, 1, 50, '/^[A-Za-z]+(?:[- ][A-Za-z]+)*$/')) {
+    if (!$validation->Validator($lastName, 1, 50, '/^[A-Za-z]+(?:[- ][A-Za-z]+)*$/', 'Last Name')) {
         $validationCheck = false;
     }
-    if (!$validation->Validator($email, 1, 255, '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/')) {
+    if (!$validation->Validator($email, 1, 255, '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', 'Email')) {
         $validationCheck = false;
     }
-    if (!$validation->Validator($contact, 5, 20, '/^\+?[0-9]+$/')) {
+    if (!$validation->Validator($contact, 5, 20, '/^\+?[0-9]+$/', 'Contact')) {
         $validationCheck = false;
     }
-    if (!$validation->Validator($address, 1, 255, "/^[a-zA-Z0-9\s,.'-]*$/")) {
+    if (!$validation->Validator($address, 1, 255, "/^[a-zA-Z0-9\s,.'-]*$/", 'Address')) {
         $validationCheck = false;
     }
-    if (!$validation->Validator($bio, 1, 300, '/^[a-zA-Z0-9\s.,!?"\'\-\(\)&\n]+$/')) {
+    if (!$validation->Validator($bio, 1, 300, '/^[a-zA-Z0-9\s.,!?"\'\-\(\)&\n]+$/', 'Bio')) {
         $validationCheck = false;
     }
     if ($userType === 'Admin') {
-        if (!$validation->Validator($adminName, 1, 50, "/^[a-zA-Z0-9_]*$/")) {
+        if (!$validation->Validator($adminName, 1, 50, "/^[a-zA-Z0-9_]*$/", 'Admin Name')) {
             $validationCheck = false;
         }
-        if (!$validation->Validator($adminPassword, 7, 255, "/^[a-zA-Z0-9_#@.&$]*$/")) {
+        if (!$validation->Validator($adminPassword, 7, 255, "/^[a-zA-Z0-9_#@.&$]*$/", 'Admin Password')) {
             $validationCheck = false;
         }
     }
