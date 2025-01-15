@@ -20,7 +20,6 @@
 
     <link rel="stylesheet" href="Assets/css/style.css">
     <link rel="stylesheet" href="Assets/css/homeStyles.css">
-    <link rel="stylesheet" href="Assets/css/modalStyles.css">
     <link rel="stylesheet" href="Assets/css/notificationStyles.css">
     <link rel="stylesheet" href="Assets/css/alertError.css">
     <link rel="stylesheet" href="Assets/css/navbarStyles.css">
