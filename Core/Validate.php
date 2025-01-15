@@ -44,6 +44,30 @@ class Validate
         $_SESSION['errors'] = $this->errors;
         return $validationCheck;
     }
+    public function imageValidator($imageName, $attrName)
+    {
+        $fileTempName = '';
+        $uploadDir = '';
+        $validationCheck = true;
+        if (isset($_FILES[$imageName]) && !empty($_FILES[$imageName]['name']) && !empty($_FILES[$imageName]['size'])) {
+            $fileName = $_FILES[$imageName]['name'];
+            $fileTempName = $_FILES[$imageName]['tmp_name'];
+            $uploadDir = 'uploads/' . $fileName;
+            move_uploaded_file($fileTempName, $uploadDir);
+        } else {
+            $this->errors[] = [
+                'attrName' => $attrName,
+                'errMsg' => "Please Upload Profile Picture."
+            ];
+            $_SESSION['errors'] = $this->errors;
+            $validationCheck = false;
+        }
+        return [
+            'validationCheck' => $validationCheck,
+            'imageName' => $fileTempName,
+            'imagePath' => $uploadDir
+        ];
+    }
     protected function nullValidator($string)
     {
         $validationCheck = true;
@@ -71,22 +95,5 @@ class Validate
             $validationCheck = false;
         }
         return $validationCheck;
-    }
-    public function imageValidation($imageName)
-    {
-        $validationCheck = true;
-        if (isset($_FILES[$imageName])) {
-            $fileName = $_FILES[$imageName]['name'];
-            $fileTempName = $_FILES[$imageName]['tmp_name'];
-            $uploadDir = 'uploads/' . $fileName;
-            move_uploaded_file($fileTempName, $uploadDir);
-        } else {
-            $validationCheck = false;
-        }
-        return [
-            'validationCheck' => $validationCheck,
-            'imageName' => $fileTempName,
-            'imagePath' => $uploadDir
-        ];
     }
 }

@@ -50,15 +50,15 @@ function Validate($validation, $image, $firstName, $lastName, $email, $contact, 
     if ($userType === 'Admin' && $validation->adminValidator()) {
         $validationCheck = false;
     }
-    if (!$validation->imageValidation($image)['validationCheck']) {
+    if (!$validation->imageValidator($image, 'User Picture')['validationCheck']) {
         $validationCheck = false;
     }
     return $validationCheck;
 }
 
 if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $address, $bio, $userType, $adminName, $adminPassword)) {
-    $imageName = $validation->imageValidation('image')['imageName'];
-    $imagePath = $validation->imageValidation('image')['imagePath'];
+    $imageName = $validation->imageValidator('image', 'User Picture')['imageName'];
+    $imagePath = $validation->imageValidator('image', 'User Picture')['imagePath'];
     store($imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword);
     header('location:/basicPHPCRUD/read');
     exit();

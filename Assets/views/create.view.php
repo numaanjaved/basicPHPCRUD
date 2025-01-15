@@ -1,6 +1,7 @@
 <?php
 views("partials/head.php");
-views("partials/navbar.php"); ?>
+views("partials/navbar.php");
+?>
 
 <main class="main">
     <div class="bg-body-tertiary">
