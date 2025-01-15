@@ -28,8 +28,8 @@
     <title>CRUD | <?php
                     if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/' || $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/home') {
                         echo "Home Page";
-                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/records') {
-                        echo "Users Record";
+                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/read') {
+                        echo "Profiles Record";
                     }
 
                     ?></title>
