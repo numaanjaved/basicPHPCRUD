@@ -1,3 +1,3 @@
 <?php
-views('create.view.php');
+views('CRUD/create.view.php');
 exit();

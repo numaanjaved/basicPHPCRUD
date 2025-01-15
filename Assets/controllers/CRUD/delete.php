@@ -1,4 +1,4 @@
 <?php
 
-views('delete.view.php');
+views('CRUD/delete.view.php');
 exit();

@@ -1,4 +1,4 @@
 <?php
 
-views('read.view.php');
+views('CRUD/read.view.php');
 exit();
