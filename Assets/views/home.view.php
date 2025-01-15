@@ -18,7 +18,7 @@ views("partials/navbar.php");
             <a href="/basicPHPCRUD/create" class="btn btn-primary btn-lg fs-2">Create</a>
             <a href="/basicPHPCRUD/read" class="btn btn-success btn-lg fs-2">Read</a>
             <a href="#" class="btn btn-secondary btn-lg fs-2">Update</a>
-            <a href="#" class="btn btn-danger btn-lg fs-2">Delete</a>
+            <a href="/basicPHPCRUD/delete" class="btn btn-danger btn-lg fs-2">Delete</a>
         </div>
     </div>
 </main>

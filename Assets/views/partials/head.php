@@ -31,6 +31,8 @@
                         echo "Profiles Record";
                     } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/create') {
                         echo "Create Profile";
+                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/delete') {
+                        echo "Delete Profile";
                     }
 
                     ?></title>
