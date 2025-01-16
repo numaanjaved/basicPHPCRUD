@@ -8,43 +8,7 @@ if (isset($_SESSION['errors'])) {
 class Validate
 {
     protected $errors = [];
-    public function adminValidator()
-    {
-        $adminCheck = false;
-        if (findAdmin()) {
-            $adminCheck = true;
-        }
-        return $adminCheck;
-    }
-    public function Validator($string, $min, $max, $regex, $attrName)
-    {
-        $validationCheck = true;
-        if (!$this->nullValidator($string)) {
-            $this->errors[] = [
-                'attrName' => $attrName,
-                'errMsg' => 'Please Fill Data in the Field.'
-            ];
-            $validationCheck = false;
-        } else {
-            if (!$this->regexValidator($string, $regex, $attrName)) {
-                $this->errors[] = [
-                    'attrName' => $attrName,
-                    'errMsg' => 'Please Enter Valid Data.'
-                ];
-                $validationCheck = false;
-            }
-            if (!$this->lengthValidator($string, $min, $max, $attrName)) {
-                $this->errors[] = [
-                    'attrName' => $attrName,
-                    'errMsg' => "Please Enter Min {$min} and Max {$max} Characters"
-                ];
-                $validationCheck = false;
-            }
-        }
-        $_SESSION['errors'] = $this->errors;
-        return $validationCheck;
-    }
-    public function imageValidator($imageName, $attrName)
+    public function imageValidator($imageName, $errFor)
     {
         $fileTempName = '';
         $uploadDir = '';
@@ -56,7 +20,7 @@ class Validate
             move_uploaded_file($fileTempName, $uploadDir);
         } else {
             $this->errors[] = [
-                'attrName' => $attrName,
+                'attrName' => $errFor,
                 'errMsg' => "Please Upload Profile Picture."
             ];
             $_SESSION['errors'] = $this->errors;
@@ -68,6 +32,48 @@ class Validate
             'imagePath' => $uploadDir
         ];
     }
+    public function adminValidator($errFor)
+    {
+        $adminCheck = false;
+        if (findAdmin()) {
+            $adminCheck = true;
+            $this->errors[] = [
+                'attrName' => $errFor,
+                'errMsg' => 'Admin Account Found, Create user account.'
+            ];
+        }
+        $_SESSION['errors'] = $this->errors;
+        return $adminCheck;
+    }
+    public function Validator($string, $min, $max, $regex, $errFor)
+    {
+        $validationCheck = true;
+        if (!$this->nullValidator($string)) {
+            $this->errors[] = [
+                'attrName' => $errFor,
+                'errMsg' => 'Please Fill Data in the Field.'
+            ];
+            $validationCheck = false;
+        } else {
+            if (!$this->regexValidator($string, $regex, $errFor)) {
+                $this->errors[] = [
+                    'attrName' => $errFor,
+                    'errMsg' => 'Please Enter Valid Data.'
+                ];
+                $validationCheck = false;
+            }
+            if (!$this->lengthValidator($string, $min, $max, $errFor)) {
+                $this->errors[] = [
+                    'attrName' => $errFor,
+                    'errMsg' => "Please Enter Min {$min} and Max {$max} Characters"
+                ];
+                $validationCheck = false;
+            }
+        }
+        $_SESSION['errors'] = $this->errors;
+        return $validationCheck;
+    }
+
     protected function nullValidator($string)
     {
         $validationCheck = true;

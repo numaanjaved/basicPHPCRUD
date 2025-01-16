@@ -16,7 +16,6 @@ $userType = htmlspecialchars($_POST['select_user']);
 $adminName = htmlspecialchars($_POST['admin_name']);
 $adminPassword = htmlspecialchars($_POST['admin_password']);
 $image = 'image';
-
 $validation = new Validate();
 function Validate($validation, $image, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)
 {
@@ -47,7 +46,7 @@ function Validate($validation, $image, $firstName, $lastName, $email, $contact, 
             $validationCheck = false;
         }
     }
-    if ($userType === 'Admin' && $validation->adminValidator()) {
+    if ($userType === 'Admin' && $validation->adminValidator('Existing Admin')) {
         $validationCheck = false;
     }
     if (!$validation->imageValidator($image, 'User Picture')['validationCheck']) {
