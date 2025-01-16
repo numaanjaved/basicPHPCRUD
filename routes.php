@@ -8,4 +8,5 @@ $router->get('/basicPHPCRUD/delete', basePath('Assets/controllers/CRUD/delete.ph
 $router->post('/basicPHPCRUD/delete', basePath('Assets/controllers/data/destroy.php'));
 $router->get('/basicPHPCRUD/update', basePath('Assets/controllers/CRUD/update.php'));
 $router->post('/basicPHPCRUD/update', basePath('Assets/controllers/CRUD/update.form.php'));
-// $router->post('/basicPHPCRUD/updaterecord', basePath('Assets/controllers/CRUD/update.php'));
+$router->post('/basicPHPCRUD/updaterecord', basePath('Assets/controllers/data/updateValidate.php'));
+$router->get('/basicPHPCRUD/updaterecord', basePath('Assets/controllers/CRUD/update.form.php'));

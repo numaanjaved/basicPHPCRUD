@@ -17,3 +17,9 @@ function views($path, $data = [])
     extract($data);
     return require_once("Assets/views/{$path}");
 }
+function removeOldImage($newPath, $oldPath)
+{
+    if ($newPath !== '' && $newPath !== $oldPath) {
+        unlink($oldPath);
+    }
+}

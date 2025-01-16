@@ -32,8 +32,8 @@ views("partials/navbar.php");
 
     </div>
     <section class="data_input_section d-flex justify-content-center align-items-center w-100">
-        <form novalidate method="POST" action="/basicPHPCRUD/create" enctype="multipart/form-data" class="data_form d-flex flex-row justify-content-center align-items-center w-100">
-            <input type="hidden" name="userId" value="<?= $record['user_id'] ?>">
+        <form novalidate method="POST" action="/basicPHPCRUD/updaterecord" enctype="multipart/form-data" class="data_form d-flex flex-row justify-content-center align-items-center w-100">
+            <input type="hidden" name="userId" value="<?= $_SESSION['inputs']['userId'] ?? $record['user_id'] ?>">
             <div
                 class="form_profile_picture_container d-flex justify-content-evenly align-items-center border flex-column">
                 <div class="image_input d-flex justify-content-center align-items-center w-100 flex-column">
@@ -44,7 +44,8 @@ views("partials/navbar.php");
                         profile picture</label>
                     <input type="file" name="image" accept="image/png, image/webp, image/jpg, image/jpeg"
                         id="imageUpload">
-                    <input type="hidden" name="image_name" value="<?= $record['image_name'] ?>">
+                    <input type="hidden" name="image_name" value="<?= $_SESSION['inputs']['imageName']  ?? $record['image_name'] ?>">
+                    <input type="hidden" name="image_path" value="<?= $_SESSION['inputs']['imagePath'] ?? $record['image_path'] ?>">
                 </div>
                 <div
                     class="profile_picture_display_container d-flex justify-content-center align-items-center overflow-hidden">
@@ -71,8 +72,7 @@ views("partials/navbar.php");
                         <input type="text" class="user_inputs" id="user_address" name="user_address"
                             autocomplete="off" placeholder="e.g., 123 Elm St, Springfield, IL" value="<?= $_SESSION['inputs']['address'] ?? $record['address'] ?>">
 
-                        <input type="hidden" name="select_user" id="select_user" class="select_user_type" value="<?= $record['user_type'] ?>">
-
+                        <input type="hidden" name="select_user" id="select_user" class="select_user_type" value="<?= $_SESSION['inputs']['userType'] ?? $record['user_type'] ?>">
                     </div>
                     <div class="type_textArea_container d-flex flex-column">
 
@@ -83,28 +83,10 @@ views("partials/navbar.php");
                             <span class="limit_exceed_text"></span>
                             <span class="limit_text">0/300</span>
                         </div>
-                        <div class="user_type_container w-100">
-                            <div
-                                class="user_type_sub_container w-100 d-flex justify-content-evenly align-items-start flex-column">
-                                <div
-                                    class="choose_user_container w-100 d-flex justify-content-center align-items-start flex-column">
-                                    <h3 class="admin_heading">User Name and Password for Admin
-                                    </h3>
-                                    <div class="admin_attr_container flex-column w-100">
-                                        <label class="admin_label" for="admin_name_input">Username</label>
-                                        <input type="text" id="admin_name_input" name="admin_name"
-                                            autocomplete="off" placeholder="e.g., john_smith" class="admin_input" value="<?= $record['admin_name'] ?>">
-
-                                        <label class="admin_label" for="admin_password_input">Password</label>
-                                        <input type="password" id="admin_password_input" name="admin_password" autocomplete="off" placeholder="Enter password here......" class="admin_input" value="<?= $record['admin_password'] ?>">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="btn_container w-100 d-flex flex-row justify-content-center align-items-center">
-                    <button type="reset" id="reset_btn" class=" form_btn btn btn-danger">Cancel</button>
+                    <a href="/basicPHPCRUD/" class=" form_btn btn btn-danger">Cancel</a>
                     <button type="submit" id="submit_btn" class="form_btn btn btn-success">Update</button>
                 </div>
             </div>
