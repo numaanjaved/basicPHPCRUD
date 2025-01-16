@@ -33,9 +33,11 @@
                         echo "Create Profile";
                     } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/delete') {
                         echo "Delete Profile";
-                    }
-
-                    ?></title>
+                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/update') {
+                        echo "Update Profile";
+                    } else {
+                        echo "404!";
+                    } ?></title>
 </head>
 
 <body>
