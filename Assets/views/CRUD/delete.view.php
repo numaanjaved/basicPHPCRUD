@@ -49,7 +49,10 @@ require('Assets/models/store.php');
                                     <p class="user_profile_data" id="user_type_data"><?= $record['user_type'] ?></p>
                                 </div>
                                 <div class="profile_btns_container d-flex justify-content-evenly flex-row align-items-center">
-                                    <button class="Ops_Buttons btn btn-danger" id="delete">Delete</button>
+                                    <form method="POST">
+                                        <input type="hidden" name="profId" value="<?= $record['user_id'] ?>">
+                                        <button class="Ops_Buttons btn fs-4 btn-danger" id="delete">Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         <?php endforeach; ?>
