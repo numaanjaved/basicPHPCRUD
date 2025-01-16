@@ -45,7 +45,7 @@ require('Assets/models/store.php');
                                         </figure>
                                     </div>
                                     <p class="user_profile_data" id="user_id"><?= $record['user_id'] ?></p>
-                                    <p class="user_profile_data" id="user_fullName_data"><?= $record['username'] ?></p>
+                                    <p class="user_profile_data" id="user_fullName_data"><?= $record['firstname'] . ' ' . $record['lastname'] ?></p>
                                     <p class="user_profile_data" id="user_type_data"><?= $record['user_type'] ?></p>
                                 </div>
                                 <div class="profile_btns_container d-flex justify-content-evenly flex-row align-items-center">

@@ -27,7 +27,7 @@ require('Assets/models/store.php');
                             </div>
                             <div class="border-start border-dark text_container d-flex flex-column align-items-start w-75 ps-3">
                                 <p class="first_name fs-3 fw-semibold">Full Name:</p>
-                                <p class="first_name fs-3 fw-regular w-100 mb-3"><?= $profile['username'] ?></p>
+                                <p class="first_name fs-3 fw-regular w-100 mb-3"><?= $profile['firstname'] . ' ' . $profile['lastname'] ?></p>
                                 <p class="first_name fs-3 fw-semibold">Email:</p>
                                 <p class="first_name fs-3 fw-regular w-100 mb-3"><?= $profile['email'] ?></p>
                                 <p class="first_name fs-3 fw-semibold">Contact Number:</p>

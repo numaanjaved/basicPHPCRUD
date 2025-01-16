@@ -12,7 +12,8 @@ function basePath($path)
     return $path;
 };
 
-function views($path)
+function views($path, $data = [])
 {
+    extract($data);
     return require_once("Assets/views/{$path}");
 }

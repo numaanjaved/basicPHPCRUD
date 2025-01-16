@@ -58,14 +58,13 @@ function newId()
 function store($imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null)
 {
     $userId = (string)newId();
-    $username = "{$firstName} {$lastName}";
     $hashedPwd = '';
     if ($adminPassword !== null && $adminPassword !== '') {
         $hashedPwd = password_hash($adminPassword, PASSWORD_BCRYPT);
     }
     $config = require('Core/config.php');
     $db = new Database($config['database'], 'root', '');
-    $query = 'INSERT INTO `records`(user_id, image_path, image_name, username, email, contact, address, bio, user_type, admin_name, admin_password)VALUES(:userId, :imagePath, :imageName, :userName, :email, :contact, :address, :bio, :userType, :adminName, :adminPwd)';
-    $params = [':userId' => $userId, ':imagePath' => $imagePath, ':imageName' => $imageName, ':userName' => $username, ':email' => $email, ':contact' => $contact, ':address' => $address, ':bio' => $bio, ':userType' => $userType, ':adminName' => $adminName, ':adminPwd' => $hashedPwd];
+    $query = 'INSERT INTO `records`(user_id, image_path, image_name, firstname, lastname, email, contact, address, bio, user_type, admin_name, admin_password)VALUES(:userId, :imagePath, :imageName, :firstName, :lastName, :email, :contact, :address, :bio, :userType, :adminName, :adminPwd)';
+    $params = [':userId' => $userId, ':imagePath' => $imagePath, ':imageName' => $imageName, ':firstName' => $firstName, ':lastName' => $lastName, ':email' => $email, ':contact' => $contact, ':address' => $address, ':bio' => $bio, ':userType' => $userType, ':adminName' => $adminName, ':adminPwd' => $hashedPwd];
     $db->query($query, $params);
 }
