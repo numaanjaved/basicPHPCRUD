@@ -51,7 +51,7 @@ require('Assets/models/store.php');
                                 <div class="profile_btns_container d-flex justify-content-evenly flex-row align-items-center">
                                     <form method="POST">
                                         <input type="hidden" name="profId" value="<?= $record['user_id'] ?>">
-                                        <button class="Ops_Buttons btn fs-4 btn-danger" id="delete">Delete</button>
+                                        <button class="Ops_Buttons btn fs-4 btn-danger fw-semibold" id="delete">Delete</button>
                                     </form>
                                 </div>
                             </div>
