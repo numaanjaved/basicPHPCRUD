@@ -4,14 +4,6 @@ views("partials/navbar.php");
 ?>
 
 <main class="main">
-    <div class="bg-body-tertiary">
-        <div class="py-3 px-5 text-center ">
-            <div class=" d-flex gap-3 justify-content-start align-items-center">
-                <img src="https://github.com/mdo.png" alt="mdo" width="60" height="60" class="rounded-circle">
-                <h1 class="text-body-emphasis">Welcome Guest!</h1>
-            </div>
-        </div>
-    </div>
     <div class="notifications_container d-flex flex-column gap-2">
         <div class="errors_container d-flex flex-column gap-2"></div>
         <?php if (isset($_SESSION['errors'])): ?>

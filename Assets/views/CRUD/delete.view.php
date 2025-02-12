@@ -5,14 +5,6 @@ require('Assets/models/store.php');
 ?>
 
 <main class="main">
-    <div class="bg-body-tertiary">
-        <div class="py-3 px-5 text-center ">
-            <div class=" d-flex gap-3 justify-content-start align-items-center">
-                <img src="https://github.com/mdo.png" alt="mdo" width="60" height="60" class="rounded-circle">
-                <h1 class="text-body-emphasis">Welcome Guest!</h1>
-            </div>
-        </div>
-    </div>
     <div class=" py-2 px-5 profiles_main_container d-flex flex-column align-items-center bg-body-tertiary">
         <h5 class="text text-info fs-1 w-100 text-center bg-dark rounded py-3 fw-regular">Click <span class="text-danger">'Delete'</span> to remove a profile.</h5>
     </div>
