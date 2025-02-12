@@ -11,6 +11,6 @@
             <li><a href="/basicPHPCRUD/update" class="nav-link px-3 <?= ($_SERVER['REQUEST_URI'] == '/basicPHPCRUD/update' ? 'activeLink' : 'navLinks'); ?>">Update</a></li>
             <li><a href="/basicPHPCRUD/delete" class="nav-link px-3 <?= ($_SERVER['REQUEST_URI'] == '/basicPHPCRUD/delete' ? 'activeLink' : 'navLinks'); ?>">Delete</a></li>
         </ul>
-        <button class="btn btn-danger logout_btn">Logout</button>
+        <button class="btn btn-danger logout_btn"> <a class="nav-link" href="/basicPHPCRUD/logout">Logout</a></button>
     </nav>
 </header>

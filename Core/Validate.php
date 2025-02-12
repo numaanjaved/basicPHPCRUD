@@ -2,6 +2,9 @@
 
 namespace Core;
 
+require('Assets/models/adminCredentials.php');
+
+
 if (isset($_SESSION['errors'])) {
     unset($_SESSION['errors']);
 }
@@ -98,6 +101,38 @@ class Validate
         $validationCheck = true;
         $string = trim($string);
         if (!preg_match($regex, $string)) {
+            $validationCheck = false;
+        }
+        return $validationCheck;
+    }
+    public function loginValidator($username, $password)
+    {
+        $validationCheck = true;
+        if (!$this->nullValidator($username) || !$this->nullValidator($password)) {
+            $this->errors[] = [
+                'attrName' => 'Blank Field',
+                'errMsg' => 'Please Fill Data in the Field.'
+            ];
+            $validationCheck = false;
+        }
+        if (!$this->adminCreMatch($username, $password)) {
+            $validationCheck = false;
+            $this->errors[] = [
+                'attrName' => 'Invalid',
+                'errMsg' => 'Please enter valid credentials.'
+            ];
+        }
+        $_SESSION['errors'] = $this->errors;
+        return $validationCheck;
+    }
+    protected function adminCreMatch($username, $password)
+    {
+        $credentials = adminCre();
+        $validationCheck = true;
+        if ($username !== $credentials['adminName']) {
+            $validationCheck = false;
+        }
+        if (!password_verify($password, $credentials['adminPassword'])) {
             $validationCheck = false;
         }
         return $validationCheck;

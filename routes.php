@@ -1,5 +1,5 @@
 <?php
-$router->get('/basicPHPCRUD', basePath('Assets/controllers/home.php'));
+$router->get('/basicPHPCRUD', basePath('Assets/controllers/index.php'));
 $router->get('/basicPHPCRUD/home', basePath('Assets/controllers/home.php'));
 $router->get('/basicPHPCRUD/read', basePath('Assets/controllers/CRUD/read.php'));
 $router->get('/basicPHPCRUD/create', basePath('Assets/controllers/CRUD/create.php'));
@@ -11,3 +11,5 @@ $router->post('/basicPHPCRUD/update', basePath('Assets/controllers/CRUD/update.f
 $router->post('/basicPHPCRUD/updaterecord', basePath('Assets/controllers/data/updateValidate.php'));
 $router->get('/basicPHPCRUD/updaterecord', basePath('Assets/controllers/CRUD/update.form.php'));
 $router->get('/basicPHPCRUD/login', basePath('Assets/controllers/login.php'));
+$router->post('/basicPHPCRUD/login', basePath('Assets/controllers/data/loginValidate.php'));
+$router->get('/basicPHPCRUD/logout', basePath('Assets/controllers/logout.php'));
