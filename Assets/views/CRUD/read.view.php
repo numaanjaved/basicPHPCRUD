@@ -6,35 +6,54 @@ require('Assets/models/store.php');
 
 <main class="main">
     <div class=" py-2 px-5 profiles_main_container d-flex flex-column align-items-center bg-body-tertiary">
-        <h3 class="fs-1 w-100 text-center bg-dark text-light rounded py-3 my-5">Profiles</h3>
-        <div class="profiles_container d-flex flex-column align-items-start w-100 gap-3">
-            <?php if (is_array(fetchAll())): ?>
-                <?php foreach (fetchAll() as $profile): ?>
-                    <div class="py-3 px-2 profile_container w-50 rounded bg-body-tertiary d-flex align-items-center flex-column border border-2 border-secondary ">
-                        <h4 class="profile_heading fs-2 fw-bold mb-5">User Profile Details</h4>
-                        <div class="profile_data w-100 d-flex flex-row">
-                            <div class="picture_container d-flex flex-column align-items-center w-25">
-                                <img src="<?= $profile['image_path'] ?>" alt="Profile Picture" width="100" height="100" class="rounded shadow-sm border">
-                                <p class="profile_id fs-3 fw-semibold my-3">Profile Id: <?= $profile['user_id'] ?></p>
-                            </div>
-                            <div class="border-start border-dark text_container d-flex flex-column align-items-start w-75 ps-3">
-                                <p class="first_name fs-3 fw-semibold">Full Name:</p>
-                                <p class="first_name fs-3 fw-regular w-100 mb-3"><?= $profile['firstname'] . ' ' . $profile['lastname'] ?></p>
-                                <p class="first_name fs-3 fw-semibold">Email:</p>
-                                <p class="first_name fs-3 fw-regular w-100 mb-3"><?= $profile['email'] ?></p>
-                                <p class="first_name fs-3 fw-semibold">Contact Number:</p>
-                                <p class="first_name fs-3 fw-regular w-100 mb-3"><?= $profile['contact'] ?></p>
-                                <p class="first_name fs-3 fw-semibold">Address:</p>
-                                <p class="first_name fs-3 fw-regular w-100 mb-3"><?= $profile['address'] ?></p>
-                                <p class="first_name fs-3 fw-semibold">Profile Description:</p>
-                                <span style="white-space: pre-line;" class="first_name fs-3 fw-regular w-100 mb-3"><?= $profile['bio'] ?></span>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-
-        </div>
+        <h5 class="text text-info fs-1 w-100 text-center bg-dark rounded py-3 fw-regular">Click <span class="text-success">'Read'</span> to view profile details.</h5>
     </div>
+    <section class="user_data_section w-100 d-flex justify-content-center align-items-center">
+        <div class="user_data_main_container w-100 d-flex flex-column justify-content-center align-items-center">
+            <h1 class="user_data_section_heading w-100 d-flex justify-content-center align-items-center  flex-row">
+                Profiles</h1>
+            <div
+                class="user_data_display_container w-100 d-flex justify-content-center align-items-center flex-column">
+                <div class="data_headings_container w-100 d-flex justify-content-between flex-row">
+                    <div class="text_container d-flex justify-content-evenly align-items-center">
+                        <h4 class="data_heading">Picture</h4>
+                        <h4 class="data_heading">Profile ID</h4>
+                        <h4 class="data_heading">Full Name</h4>
+                        <h4 class="data_heading">Profile Type</h4>
+                    </div>
+                    <div class="actions_container d-flex justify-content-center align-items-center">
+                        <h4 class="data_heading w-100">Actions</h4>
+                    </div>
+                </div>
+                <div class="individual_user_data_container position-relative w-100 d-flex justify-content-start flex-column align-items-center">
+                    <?php if (is_array(fetchAll())): ?>
+                        <?php foreach (fetchAll() as  $record):  ?>
+
+                            <div class="individual_user_data w-100 d-flex justify-content-between align-items-center">
+                                <div class="text_record d-flex justify-content-evenly align-items-center">
+                                    <div class="user_profile_data d-flex justify-content-center align-items-center">
+                                        <figure class="profile_img_container">
+                                            <img class="user_profile_img" src="<?= $record['image_path'] ?>" alt="Profile Picture">
+                                        </figure>
+                                    </div>
+                                    <p class="user_profile_data" id="user_id"><?= $record['user_id'] ?></p>
+                                    <p class="user_profile_data" id="user_fullName_data"><?= $record['firstname'] . ' ' . $record['lastname'] ?></p>
+                                    <p class="user_profile_data" id="user_type_data"><?= $record['user_type'] ?></p>
+                                </div>
+                                <div class="profile_btns_container d-flex justify-content-evenly flex-row align-items-center">
+                                    <form method="POST">
+                                        <input type="hidden" name="profId" value="<?= $record['user_id'] ?>">
+                                        <button class="Ops_Buttons btn fs-4 btn-success fw-semibold" id="read">Read</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p class="text text-warning fs-1 fw-semibold">No Records Found.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 <?php views("partials/footer.php") ?>

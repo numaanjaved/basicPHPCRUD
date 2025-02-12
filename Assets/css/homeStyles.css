@@ -338,3 +338,8 @@
     color: var(--primary-font-color);
   }
 }
+
+.allProfilesContainer {
+  height: 748px;
+  width: 100%;
+}
