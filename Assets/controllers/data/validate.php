@@ -65,6 +65,12 @@ if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $ad
     unset($_SESSION['uploadedPictureName']);
     exit();
 } else {
+    if (!isset($_SESSION['uploadedPicturePath']) || $_SESSION['uploadedPicturePath'] === '') {
+        $_SESSION['uploadedPicturePath'] = $validation->imageValidator('image', 'User Picture')['imagePath'];
+    }
+    if (!isset($_SESSION['uploadedPictureName']) ||   $_SESSION['uploadedPictureName'] === '') {
+        $_SESSION['uploadedPictureName'] = $validation->imageValidator('image', 'User Picture')['imageName'];
+    }
     $_SESSION['inputs'] = [
         'firstName' =>  $firstName,
         'lastName' => $lastName,
@@ -74,12 +80,8 @@ if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $ad
         'bio' =>  $bio,
         'userType' =>  $userType,
         'adminName' =>  $adminName,
-        'adminPwd' =>  $adminPassword,
-        'profilePic' => $validation->imageValidator('image', 'User Picture')['imagePath'],
+        'adminPwd' =>  $adminPassword
     ];
-    $_SESSION['uploadedPicturePath'] = $validation->imageValidator('image', 'User Picture')['imagePath'];
-    $_SESSION['uploadedPictureName'] = $validation->imageValidator('image', 'User Picture')['imageName'];
-
     header('location:/basicPHPCRUD/create');
     exit();
 }

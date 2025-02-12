@@ -1,6 +1,11 @@
 <?php
 views("partials/head.php");
 views("partials/navbar.php");
+
+$defaultImage = 'Assets/images/default_profile.png';
+$profileImage = !empty($_SESSION['uploadedPicturePath']) && file_exists($_SESSION['uploadedPicturePath'])
+    ? htmlspecialchars($_SESSION['uploadedPicturePath'])
+    : $defaultImage;
 ?>
 
 <main class="main">
@@ -39,7 +44,7 @@ views("partials/navbar.php");
                 </div>
                 <div
                     class="profile_picture_display_container d-flex justify-content-center align-items-center overflow-hidden">
-                    <img src="<?= isset($_SESSION['uploadedPicturePath']) ?  $_SESSION['uploadedPicturePath'] : 'Assets/images/default_profile.png' ?>" alt="Default Profile Picture" id="form_img"
+                    <img src="<?= $profileImage ?>" alt="Default Profile Picture" id="form_img"
                         class="w-100 h-100" name="profile_img">
                 </div>
             </div>
