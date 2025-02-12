@@ -10,3 +10,4 @@ $router->get('/basicPHPCRUD/update', basePath('Assets/controllers/CRUD/update.ph
 $router->post('/basicPHPCRUD/update', basePath('Assets/controllers/CRUD/update.form.php'));
 $router->post('/basicPHPCRUD/updaterecord', basePath('Assets/controllers/data/updateValidate.php'));
 $router->get('/basicPHPCRUD/updaterecord', basePath('Assets/controllers/CRUD/update.form.php'));
+$router->get('/basicPHPCRUD/login', basePath('Assets/controllers/login.php'));

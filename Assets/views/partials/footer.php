@@ -13,6 +13,10 @@
 <script src="Assets/javascript/views/form/imageUpload.js" type="module"></script>
 <script src="Assets/javascript/views/records/RUDButtons.js"></script>
 <script src="Assets/javascript/views/home/alerts/remove.js" type="module"></script>
+<?php if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/login') {
+    echo '<script src="Assets/javascript/views/login/eyeBtn.js"></script>';
+}
+?>
 </body>
 
 </html>

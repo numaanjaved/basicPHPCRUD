@@ -23,7 +23,10 @@
     <link rel="stylesheet" href="Assets/css/notificationStyles.css">
     <link rel="stylesheet" href="Assets/css/alertError.css">
     <link rel="stylesheet" href="Assets/css/navbarStyles.css">
-
+    <?php if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/login') {
+        echo '<link rel="stylesheet" href="Assets/css/loginStyles.css">';
+    }
+    ?>
     <title>CRUD | <?php
                     if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/' || $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/home') {
                         echo "Home Page";
@@ -35,6 +38,8 @@
                         echo "Delete Profile";
                     } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/update') {
                         echo "Update Profile";
+                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/login') {
+                        echo "Login Page";
                     } else {
                         echo "404!";
                     } ?></title>
