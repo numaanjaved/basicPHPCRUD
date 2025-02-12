@@ -56,10 +56,13 @@ function Validate($validation, $image, $firstName, $lastName, $email, $contact, 
 }
 
 if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $address, $bio, $userType, $adminName, $adminPassword)) {
-    $imageName = $validation->imageValidator('image', 'User Picture')['imageName'];
-    $imagePath = $validation->imageValidator('image', 'User Picture')['imagePath'];
+    $imageName = isset($_SESSION['uploadedPictureName']) ?  $_SESSION['uploadedPictureName'] : $validation->imageValidator('image', 'User Picture')['imageName'];
+    $imagePath = isset($_SESSION['uploadedPicturePath']) ? $_SESSION['uploadedPicturePath'] : $validation->imageValidator('image', 'User Picture')['imagePath'];
     store($imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword);
     header('location:/basicPHPCRUD/read');
+    unset($_SESSION['inputs']);
+    unset($_SESSION['uploadedPicturePath']);
+    unset($_SESSION['uploadedPictureName']);
     exit();
 } else {
     $_SESSION['inputs'] = [
@@ -72,7 +75,11 @@ if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $ad
         'userType' =>  $userType,
         'adminName' =>  $adminName,
         'adminPwd' =>  $adminPassword,
+        'profilePic' => $validation->imageValidator('image', 'User Picture')['imagePath'],
     ];
+    $_SESSION['uploadedPicturePath'] = $validation->imageValidator('image', 'User Picture')['imagePath'];
+    $_SESSION['uploadedPictureName'] = $validation->imageValidator('image', 'User Picture')['imageName'];
+
     header('location:/basicPHPCRUD/create');
     exit();
 }

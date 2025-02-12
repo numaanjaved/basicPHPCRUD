@@ -16,18 +16,20 @@ class Validate
         $fileTempName = '';
         $uploadDir = '';
         $validationCheck = true;
-        if (isset($_FILES[$imageName]) && !empty($_FILES[$imageName]['name']) && !empty($_FILES[$imageName]['size'])) {
-            $fileName = $_FILES[$imageName]['name'];
-            $fileTempName = $_FILES[$imageName]['tmp_name'];
-            $uploadDir = 'uploads/' . $fileName;
-            move_uploaded_file($fileTempName, $uploadDir);
-        } else {
-            $this->errors[] = [
-                'attrName' => $errFor,
-                'errMsg' => "Please Upload Profile Picture."
-            ];
-            $_SESSION['errors'] = $this->errors;
-            $validationCheck = false;
+        if ($_SESSION['uploadedPicturePath']  === '' || $_SESSION['uploadedPicturePath']  === null) {
+            if (isset($_FILES[$imageName]) && !empty($_FILES[$imageName]['name']) && !empty($_FILES[$imageName]['size'])) {
+                $fileName = $_FILES[$imageName]['name'];
+                $fileTempName = $_FILES[$imageName]['tmp_name'];
+                $uploadDir = 'uploads/' . $fileName;
+                move_uploaded_file($fileTempName, $uploadDir);
+            } else {
+                $this->errors[] = [
+                    'attrName' => $errFor,
+                    'errMsg' => "Please Upload Profile Picture."
+                ];
+                $_SESSION['errors'] = $this->errors;
+                $validationCheck = false;
+            }
         }
         return [
             'validationCheck' => $validationCheck,

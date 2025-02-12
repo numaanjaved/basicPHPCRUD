@@ -3,8 +3,8 @@ views("partials/head.php");
 views("partials/navbar.php");
 ?>
 
-<main class="main">
-    <div class="d-flex justify-content-center flex-column align-items-center my-5">
+<main class="main" style="min-height: 610px;">
+    <div class="d-flex justify-content-center flex-column align-items-center my-5 h-100">
         <h2 class="mb-5 text text-dark fw-bold fs-1">Choose Operation</h2>
         <div class="d-flex gap-3">
             <a href="/basicPHPCRUD/create" class="btn btn-primary btn-lg fs-2">Create</a>

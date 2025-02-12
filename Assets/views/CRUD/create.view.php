@@ -39,7 +39,7 @@ views("partials/navbar.php");
                 </div>
                 <div
                     class="profile_picture_display_container d-flex justify-content-center align-items-center overflow-hidden">
-                    <img src="Assets/images/default_profile.png" alt="Default Profile Picture" id="form_img"
+                    <img src="<?= isset($_SESSION['uploadedPicturePath']) ?  $_SESSION['uploadedPicturePath'] : 'Assets/images/default_profile.png' ?>" alt="Default Profile Picture" id="form_img"
                         class="w-100 h-100" name="profile_img">
                 </div>
             </div>
