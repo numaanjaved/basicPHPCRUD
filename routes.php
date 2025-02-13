@@ -15,4 +15,4 @@ $router->get('/basicPHPCRUD/login', basePath('Assets/controllers/login.php'));
 $router->post('/basicPHPCRUD/login', basePath('Assets/controllers/data/loginValidate.php'));
 $router->get('/basicPHPCRUD/logout', basePath('Assets/controllers/logout.php'));
 $router->get('/basicPHPCRUD/otp', basePath('Assets/controllers/otp.php'));
-$router->post('/basicPHPCRUD/otp', basePath('Assets/controllers/data/loginValidate.php'));
+$router->post('/basicPHPCRUD/otp', basePath('Assets/controllers/otpValidate.php'));
