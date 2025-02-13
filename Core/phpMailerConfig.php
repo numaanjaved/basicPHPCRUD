@@ -8,10 +8,9 @@ require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 require 'vendor/phpmailer/phpmailer/src/Exception.php';
 
-function sendOTP()
+function sendOTP($firstName, $lastName, $email, $otp)
 {
     $mail = new PHPMailer(true);
-
     try {
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -25,13 +24,11 @@ function sendOTP()
 
         //Recipients
         $mail->setFrom('ahmedkahout07@gmail.com', 'Ahmed');
-        $mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
+        $mail->addAddress($email, $firstName . ' ' . $lastName);     //Add a recipient
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'Here is the subject';
-        $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-
-
+        $mail->Subject = 'OTP Verification';
+        $mail->Body    = 'This is your OTP: ' . '<b>' . $otp . '</b>';
         $mail->send();
         echo 'Message has been sent';
     } catch (Exception $e) {
