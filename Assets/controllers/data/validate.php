@@ -6,6 +6,7 @@ require('Assets/models/admin.php');
 
 use Core\Validate;
 
+$otp = htmlspecialchars($_POST['otp']);
 $firstName = htmlspecialchars($_POST['user_Fname']);
 $lastName = htmlspecialchars($_POST['user_Lname']);
 $email = htmlspecialchars($_POST['user_email']);

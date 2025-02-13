@@ -66,6 +66,8 @@ $profileImage = !empty($_SESSION['uploadedPicturePath']) && file_exists($_SESSIO
                         <label class="text_form_labels" for="user_address">Address</label>
                         <input type="text" class="user_inputs" id="user_address" name="user_address"
                             autocomplete="off" placeholder="e.g., 123 Elm St, Springfield, IL" value="<?= $_SESSION['inputs']['address'] ?? '' ?>">
+                        <input type="hidden" class="user_inputs" id="otp" name="otp"
+                            autocomplete="off">
                         <div class="select_container d-flex flex-column">
                             <label for="select_user" id="choose_user_heading" class="text_form_labels">Choose User
                                 Type</label>
