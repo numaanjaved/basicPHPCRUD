@@ -63,7 +63,8 @@ views("partials/navbar.php");
                         <label class="text_form_labels" for="user_address">Address</label>
                         <input type="text" class="user_inputs" id="user_address" name="user_address"
                             autocomplete="off" placeholder="e.g., 123 Elm St, Springfield, IL" value="<?= $_SESSION['inputs']['address'] ?? $record['address'] ?>">
-
+                        <input type="hidden" class="user_inputs" id="otp" name="otp"
+                            autocomplete="off">
                         <input type="hidden" name="select_user" id="select_user" class="select_user_type" value="<?= $_SESSION['inputs']['userType'] ?? $record['user_type'] ?>">
                     </div>
                     <div class="type_textArea_container d-flex flex-column">

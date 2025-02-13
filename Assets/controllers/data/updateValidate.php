@@ -3,9 +3,11 @@
 unset($_SESSION['inputs']);
 require('Assets/models/update.php');
 require_once('Core/Validate.php');
+require('Core/phpMailerConfig.php');
 
 use Core\Validate;
 
+$otp = htmlspecialchars($_POST['otp']);
 $userId = htmlspecialchars($_POST["userId"]);
 $imageName = htmlspecialchars($_POST["image_name"]);
 $imagePath = htmlspecialchars($_POST["image_path"]);
@@ -49,8 +51,10 @@ if (Validate($validation, $imageName, $imagePath, $image, $firstName, $lastName,
     removeOldImage($validation->imageValidator('image', 'User Picture')['imagePath'], $imagePath);
     $imageName = $validation->imageValidator('image', 'User Picture')['imageName'] ? $validation->imageValidator('image', 'User Picture')['imageName'] : $imageName;
     $imagePath = $validation->imageValidator('image', 'User Picture')['imagePath'] ? $validation->imageValidator('image', 'User Picture')['imagePath'] : $imagePath;
-    update($userId, $imageName, $imagePath, $firstName, $lastName, $userEmail, $userContact, $userAddress, $userBio, $userType);
-    header('location:/basicPHPCRUD/read');
+    update($userId, $imageName, $imagePath, $firstName, $lastName, $userEmail, $userContact, $userAddress, $userBio, $userType, $otp);
+    sendOTP($firstName, $lastName, $userEmail, $otp);
+    $_SESSION['userId'] = $userId;
+    header('location:/basicPHPCRUD/otp');
     exit();
 } else {
     $_SESSION['inputs'] = [
