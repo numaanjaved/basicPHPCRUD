@@ -43,6 +43,8 @@
                         echo "Update Profile";
                     } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/login') {
                         echo "Login Page";
+                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/otp') {
+                        echo "Verify OTP";
                     } else {
                         echo "404!";
                     } ?></title>

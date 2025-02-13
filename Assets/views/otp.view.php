@@ -15,7 +15,7 @@ views('partials/head.php');
                         <input class="mx-2 mt-5 text-center form-control rounded" type="text" id="fifth" maxlength="1" />
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-25 login_btn fs-3 validate" id="login_form_btn">Validate</button>
+                    <button type="submit" class="btn btn-primary w-50 login_btn fs-3 validate" id="login_form_btn">Validate</button>
         </div>
 
     </div>
