@@ -55,9 +55,8 @@ function newId()
     $newId = 'prof00' . $maxNum + 1;
     return $newId;
 }
-function store($imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null, $otp)
+function store($userId, $imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName = null, $adminPassword = null, $otp)
 {
-    $userId = (string)newId();
     $hashedPwd = '';
     if ($adminPassword !== null && $adminPassword !== '') {
         $hashedPwd = password_hash($adminPassword, PASSWORD_BCRYPT);

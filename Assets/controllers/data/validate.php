@@ -60,12 +60,14 @@ function Validate($validation, $image, $firstName, $lastName, $email, $contact, 
 if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $address, $bio, $userType, $adminName, $adminPassword)) {
     $imageName = isset($_SESSION['uploadedPictureName']) ?  $_SESSION['uploadedPictureName'] : $validation->imageValidator('image', 'User Picture')['imageName'];
     $imagePath = isset($_SESSION['uploadedPicturePath']) ? $_SESSION['uploadedPicturePath'] : $validation->imageValidator('image', 'User Picture')['imagePath'];
-    store($imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword, $otp);
+    $userId = (string)newId();
+    store($userId, $imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword, $otp);
     sendOTP($firstName, $lastName, $email, $otp);
-    header('location:/basicPHPCRUD/read');
+    $_SESSION['userId'] = $userId;
     unset($_SESSION['inputs']);
     unset($_SESSION['uploadedPicturePath']);
     unset($_SESSION['uploadedPictureName']);
+    header('location: /basicPHPCRUD/otp');
     exit();
 } else {
     if (!isset($_SESSION['uploadedPicturePath']) || $_SESSION['uploadedPicturePath'] === '') {
