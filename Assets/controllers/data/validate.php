@@ -3,6 +3,7 @@ unset($_SESSION['inputs']);
 require_once('Core/Validate.php');
 require_once('Assets/models/store.php');
 require('Assets/models/admin.php');
+require('Core/phpMailerConfig.php');
 
 use Core\Validate;
 
@@ -59,7 +60,8 @@ function Validate($validation, $image, $firstName, $lastName, $email, $contact, 
 if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $address, $bio, $userType, $adminName, $adminPassword)) {
     $imageName = isset($_SESSION['uploadedPictureName']) ?  $_SESSION['uploadedPictureName'] : $validation->imageValidator('image', 'User Picture')['imageName'];
     $imagePath = isset($_SESSION['uploadedPicturePath']) ? $_SESSION['uploadedPicturePath'] : $validation->imageValidator('image', 'User Picture')['imagePath'];
-    store($imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword);
+    store($imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword, $otp);
+    sendOTP($firstName, $lastName, $email, $otp);
     header('location:/basicPHPCRUD/read');
     unset($_SESSION['inputs']);
     unset($_SESSION['uploadedPicturePath']);
