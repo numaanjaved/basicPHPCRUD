@@ -26,6 +26,9 @@
     <?php if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/login') {
         echo '<link rel="stylesheet" href="Assets/css/loginStyles.css">';
     }
+    if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/otp') {
+        echo '<link rel="stylesheet" href="Assets/css/otpStyles.css">';
+    }
     ?>
     <title>CRUD | <?php
                     if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/' || $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/home') {

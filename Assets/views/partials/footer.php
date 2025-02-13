@@ -17,6 +17,9 @@
 <?php if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/login') {
     echo '<script src="Assets/javascript/views/login/eyeBtn.js"></script>';
 }
+if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/otp') {
+    echo '<script src="Assets/javascript/views/otp/otpDigits.js"></script>';
+}
 ?>
 </body>
 

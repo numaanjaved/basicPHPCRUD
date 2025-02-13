@@ -1,0 +1,52 @@
+.height-100 {
+  height: 96vh;
+}
+.card {
+  width: 450px;
+  border: none;
+  height: 300px;
+  box-shadow: 0px 5px 5px 0px #d2dae3;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-sky);
+}
+.card h6 {
+  font-family: "poppins", sans-serif;
+  font-size: 2.4rem;
+  color: var(--primary-font-color);
+}
+.inputs input {
+  font-family: "poppins", sans-serif;
+  color: var(--primary-font-color);
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: 2px solid var(--primary-font-color);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+.form-control:focus {
+  box-shadow: none;
+  border: 2px solid #0a58ca;
+}
+.validate {
+  border-radius: 7px;
+  height: 40px;
+  width: 140px;
+  margin-top: 70px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.mail_msg {
+  font-size: 1.5rem;
+}
