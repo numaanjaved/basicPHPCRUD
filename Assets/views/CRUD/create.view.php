@@ -1,4 +1,5 @@
 <?php
+$action = $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/create' ? '/basicPHPCRUD/create' : '/basicPHPCRUD/register';
 views("partials/head.php");
 $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/create' ? views("partials/navbar.php") : '';
 
@@ -30,7 +31,7 @@ $profileImage = !empty($_SESSION['uploadedPicturePath']) && file_exists($_SESSIO
 
     </div>
     <section class="data_input_section d-flex justify-content-center align-items-center w-100">
-        <form novalidate method="POST" action="/basicPHPCRUD/create" enctype="multipart/form-data" class="data_form d-flex flex-row justify-content-center align-items-center w-100">
+        <form novalidate method="POST" action="<?= $action ?>" enctype="multipart/form-data" class="data_form d-flex flex-row justify-content-center align-items-center w-100">
             <div
                 class="form_profile_picture_container d-flex justify-content-evenly align-items-center border flex-column">
                 <div class="image_input d-flex justify-content-center align-items-center w-100 flex-column">

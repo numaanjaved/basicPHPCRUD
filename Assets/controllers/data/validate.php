@@ -88,6 +88,6 @@ if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $ad
         'adminName' =>  $adminName,
         'adminPwd' =>  $adminPassword
     ];
-    header('location:/basicPHPCRUD/create');
+    $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/register' ? header('location:/basicPHPCRUD/register') : header('location:/basicPHPCRUD/create');
     exit();
 }
