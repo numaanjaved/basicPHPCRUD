@@ -16,7 +16,7 @@ class Validate
         $fileTempName = '';
         $uploadDir = '';
         $validationCheck = true;
-        if ($_SESSION['uploadedPicturePath']  === '' || $_SESSION['uploadedPicturePath']  === null) {
+        if (!isset($_SESSION['uploadedPicturePath']) || $_SESSION['uploadedPicturePath']  === '') {
             if (isset($_FILES[$imageName]) && !empty($_FILES[$imageName]['name']) && !empty($_FILES[$imageName]['size'])) {
                 $fileName = $_FILES[$imageName]['name'];
                 $fileTempName = $_FILES[$imageName]['tmp_name'];
