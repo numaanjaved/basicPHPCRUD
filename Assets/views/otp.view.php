@@ -5,9 +5,8 @@ views('partials/head.php');
 <div class="auth_container container height-100 d-flex justify-content-center align-items-center">
     <div class="position-relative">
         <div class="card p-2 text-center">
-            <h6>Please enter OTP<br> to verify your account</h6>
-            <span class="mail_msg">A code has been sent to <?= "ahmedkahout07@gmail.com" ?> </span>
-
+            <h6>Please enter OTP<br>to verify your account</h6>
+            <span class="mail_msg">A code has been sent to <b><?= $_SESSION['otpEmail']  ?><b> </span>
             <span class="text text-danger fs-4 mt-2 fw-semibold"><?= $_SESSION['otpError'] ?? '' ?> </span>
 
             <form action="/basicPHPCRUD/otp" method="POST" class="inputs d-flex flex-column justify-content-center align-items-center mt-2">

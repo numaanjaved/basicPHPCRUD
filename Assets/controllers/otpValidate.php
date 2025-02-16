@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD']) {
         unset($_SESSION['destroyData']);
         unset($_SESSION['userId']);
         unset($_SESSION['otpError']);
+        unset($_SESSION['otpEmail']);
         header('location: /basicPHPCRUD/read');
         exit;
     } else {

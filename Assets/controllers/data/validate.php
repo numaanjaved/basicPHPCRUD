@@ -64,6 +64,7 @@ if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $ad
     store($userId, $imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword, $otp);
     sendOTP($firstName, $lastName, $email, $otp);
     $_SESSION['userId'] = $userId;
+    $_SESSION['otpEmail'] = $email;
     unset($_SESSION['inputs']);
     unset($_SESSION['uploadedPicturePath']);
     unset($_SESSION['uploadedPictureName']);

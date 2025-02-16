@@ -54,6 +54,7 @@ if (Validate($validation, $imageName, $imagePath, $image, $firstName, $lastName,
     update($userId, $imageName, $imagePath, $firstName, $lastName, $userEmail, $userContact, $userAddress, $userBio, $userType, $otp);
     sendOTP($firstName, $lastName, $userEmail, $otp);
     $_SESSION['userId'] = $userId;
+    $_SESSION['otpEmail'] = $userEmail;
     header('location:/basicPHPCRUD/otp');
     exit();
 } else {
