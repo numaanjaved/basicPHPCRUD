@@ -30,24 +30,30 @@
         echo '<link rel="stylesheet" href="Assets/css/otpStyles.css">';
     }
     ?>
-    <title>CRUD | <?php
-                    if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/' || $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/home') {
-                        echo "Home Page";
-                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/read') {
-                        echo "Profiles Record";
-                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/create') {
-                        echo "Create Profile";
-                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/delete') {
-                        echo "Delete Profile";
-                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/update') {
-                        echo "Update Profile";
-                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/login') {
-                        echo "Login Page";
-                    } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/otp') {
-                        echo "Verify OTP";
-                    } else {
-                        echo "404!";
-                    } ?></title>
+    <title>CRUD |
+        <?php
+        if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/' || $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/home') {
+            echo "Home Page";
+        } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/read') {
+            echo "Profiles Record";
+        } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/create') {
+            echo "Create Profile";
+        } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/delete') {
+            echo "Delete Profile";
+        } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/update') {
+            echo "Update Profile";
+        } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/login') {
+            echo "Login Page";
+        } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/otp') {
+            echo "Verify OTP";
+        } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/register') {
+            echo "Register Admin";
+        } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/noAdmin') {
+            echo "No Admin Found";
+        } else {
+            echo "404!";
+        } ?>
+    </title>
 </head>
 
 <body>

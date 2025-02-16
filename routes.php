@@ -16,3 +16,6 @@ $router->post('/basicPHPCRUD/login', basePath('Assets/controllers/data/loginVali
 $router->get('/basicPHPCRUD/logout', basePath('Assets/controllers/logout.php'));
 $router->get('/basicPHPCRUD/otp', basePath('Assets/controllers/otp.php'));
 $router->post('/basicPHPCRUD/otp', basePath('Assets/controllers/otpValidate.php'));
+$router->get('/basicPHPCRUD/register', basePath('Assets/controllers/register.php'));
+$router->post('/basicPHPCRUD/register', basePath('Assets/controllers/data/validate.php'));
+$router->get('/basicPHPCRUD/noAdmin', basePath('Assets/controllers/adminMsg.php'));
