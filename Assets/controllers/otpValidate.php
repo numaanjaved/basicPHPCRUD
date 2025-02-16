@@ -1,6 +1,6 @@
 <?php
 require 'Assets/models/find.php';
-
+require('Assets/models/destroy.php');
 
 if ($_SERVER['REQUEST_METHOD']) {
     $firstDigit = $_POST['dig1'];
@@ -21,6 +21,12 @@ if ($_SERVER['REQUEST_METHOD']) {
         return $validationCheck;
     }
     if (validateOtp($mailCode)) {
+        if (isset($_SESSION['destroyData'])) {
+            $path = $_SESSION['destroyData']['path'];
+            destroy($_SESSION['userId'], $path);
+        }
+        destroy($profId, $path);
+        unset($_SESSION['destroyData']);
         unset($_SESSION['userId']);
         unset($_SESSION['otpError']);
         header('location: /basicPHPCRUD/read');

@@ -41,8 +41,10 @@ require('Assets/models/store.php');
                                     <p class="user_profile_data" id="user_type_data"><?= $record['user_type'] ?></p>
                                 </div>
                                 <div class="profile_btns_container d-flex justify-content-evenly flex-row align-items-center">
-                                    <form method="POST">
+                                    <form class="deleteForm" method="POST">
                                         <input type="hidden" name="profId" value="<?= $record['user_id'] ?>">
+                                        <input type="hidden" class="user_inputs otp" id="otp" name="otp"
+                                            autocomplete="off" value="<?= rand(10000, 99999) ?>">
                                         <button class="Ops_Buttons btn fs-4 btn-danger fw-semibold" id="delete">Delete</button>
                                     </form>
                                 </div>
