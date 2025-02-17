@@ -55,6 +55,9 @@ if (Validate($validation, $imageName, $imagePath, $image, $firstName, $lastName,
     sendOTP($firstName, $lastName, $userEmail, $otp);
     $_SESSION['userId'] = $userId;
     $_SESSION['otpEmail'] = $userEmail;
+    unset($_SESSION['inputs']);
+    unset($_SESSION['uploadedPicture']);
+    unset($_SESSION['uploadedPicturePath']);
     header('location:/basicPHPCRUD/otp');
     exit();
 } else {
