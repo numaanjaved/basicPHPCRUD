@@ -1,9 +1,10 @@
 <?php
 unset($_SESSION['inputs']);
 require_once('Core/Validate.php');
-require_once('Assets/models/store.php');
 require('Assets/models/admin.php');
 require('Core/phpMailerConfig.php');
+require_once('Assets/models/otp.php');
+require_once('Assets/models/store.php');
 
 use Core\Validate;
 
@@ -61,10 +62,14 @@ if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $ad
     $imageName = isset($_SESSION['uploadedPicture']["name"]) ?  $_SESSION['uploadedPicture']["name"] : $validation->imageValidator('image', 'User Picture')['imageName'];
     $imagePath = isset($_SESSION['uploadedPicturePath']) ? $_SESSION['uploadedPicturePath'] : $validation->imageValidator('image', 'User Picture')['imagePath'];
     $userId = (string)newId();
-    store($userId, $imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword, $otp);
+
     sendOTP($firstName, $lastName, $email, $otp);
+    storeOTP($otp, $userId);
     $_SESSION['userId'] = $userId;
+    $_SESSION['RequestMode'] = 'Create';
     $_SESSION['otpEmail'] = $email;
+    $_SESSION['userData'] = ['userId' => $userId, 'imageName' => $imageName, 'imagePath' => $imagePath, 'firstName' => $firstName, 'lastName' => $lastName, 'email' => $email, 'contact' => $contact, 'address' => $address, 'bio' => $bio, 'userType' => $userType, 'adminName' => $adminName, 'adminPassword' => $adminPassword];
+
     unset($_SESSION['inputs']);
     unset($_SESSION['uploadedPicture']);
     unset($_SESSION['uploadedPicturePath']);

@@ -1,39 +1,48 @@
 <?php
-require 'Assets/models/find.php';
-require('Assets/models/destroy.php');
+require_once('Assets/models/otp.php');
+require_once('Assets/models/destroy.php');
+require_once('Assets/models/store.php');
 
-if ($_SERVER['REQUEST_METHOD']) {
-    $firstDigit = $_POST['dig1'];
-    $secondDigit = $_POST['dig2'];
-    $thirdDigit = $_POST['dig3'];
-    $fourthDigit = $_POST['dig4'];
-    $fifthDigit = $_POST['dig5'];
-    $mailCode = intval($firstDigit . $secondDigit . $thirdDigit . $fourthDigit . $fifthDigit);
-    function validateOtp($mailCode)
-    {
-        $validationCheck = true;
-        $profileId = find($_SESSION['userId']);
-        $otp = $profileId['otp'];
-        if ($otp !== $mailCode) {
-            $validationCheck = false;
-            $_SESSION['otpError'] = "Please Enter Valid Code.";
-        }
-        return $validationCheck;
+
+$firstDigit = $_POST['dig1'];
+$secondDigit = $_POST['dig2'];
+$thirdDigit = $_POST['dig3'];
+$fourthDigit = $_POST['dig4'];
+$fifthDigit = $_POST['dig5'];
+$mailCode = intval($firstDigit . $secondDigit . $thirdDigit . $fourthDigit . $fifthDigit);
+function validateOtp($mailCode)
+{
+    $validationCheck = true;
+    $otp = findOTP($_SESSION['userId']);
+    $otpCode = $otp['otp_code'];
+    if ($otpCode !== $mailCode) {
+        $validationCheck = false;
+        $_SESSION['otpError'] = "Please Enter Valid Code.";
     }
-    if (validateOtp($mailCode)) {
-        if (isset($_SESSION['destroyData'])) {
-            $path = $_SESSION['destroyData']['path'];
-            destroy($_SESSION['userId'], $path);
-        }
-        destroy($profId, $path);
+    return $validationCheck;
+}
+if (validateOtp($mailCode)) {
+    if (isset($_SESSION['RequestMode']) && ($_SESSION['RequestMode']  === 'Create')) {
+        $dataArray = $_SESSION['userData'];
+        extract($dataArray);
+        store($userId, $imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword);
+        unset($_SESSION['RequestMode']);
+        unset($_SESSION['userData']);
+    }
+    // if ($_SESSION['RequestMode'] === 'Update') {
+    // }
+    if (isset($_SESSION['destroyData'])) {
+        $path = $_SESSION['destroyData']['path'];
+        destroy($_SESSION['userId'], $path);
         unset($_SESSION['destroyData']);
-        unset($_SESSION['userId']);
-        unset($_SESSION['otpError']);
-        unset($_SESSION['otpEmail']);
-        header('location: /basicPHPCRUD/read');
-        exit;
-    } else {
-        header('location: /basicPHPCRUD/otp');
-        exit;
     }
+    removeOTP($_SESSION['userId']);
+    unset($_SESSION['userId']);
+    unset($_SESSION['otpError']);
+    unset($_SESSION['otpEmail']);
+    header('location: /basicPHPCRUD/read');
+    exit;
+} else {
+    header('location: /basicPHPCRUD/otp');
+    exit;
 }
