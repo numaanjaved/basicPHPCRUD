@@ -4,6 +4,7 @@ unset($_SESSION['inputs']);
 require('Assets/models/update.php');
 require_once('Core/Validate.php');
 require('Core/phpMailerConfig.php');
+require_once('Assets/models/otp.php');
 
 use Core\Validate;
 
@@ -51,7 +52,9 @@ if (Validate($validation, $imageName, $imagePath, $image, $firstName, $lastName,
     removeOldImage($validation->imageValidator('image', 'User Picture')['imagePath'], $imagePath);
     $imageName = $validation->imageValidator('image', 'User Picture')['imageName'] ? $validation->imageValidator('image', 'User Picture')['imageName'] : $imageName;
     $imagePath = $validation->imageValidator('image', 'User Picture')['imagePath'] ? $validation->imageValidator('image', 'User Picture')['imagePath'] : $imagePath;
-    update($userId, $imageName, $imagePath, $firstName, $lastName, $userEmail, $userContact, $userAddress, $userBio, $userType, $otp);
+    $_SESSION['RequestMode'] = 'Update';
+    $_SESSION['userData'] = ['userId' => $userId, 'imageName' => $imageName, 'imagePath' => $imagePath, 'firstName' => $firstName, 'lastName' => $lastName, 'userEmail' => $userEmail, 'userContact' => $userContact, 'userAddress' => $userAddress, 'userBio' => $userBio, 'userType' => $userType];
+    storeOTP($otp, $userId);
     sendOTP($firstName, $lastName, $userEmail, $otp);
     $_SESSION['userId'] = $userId;
     $_SESSION['otpEmail'] = $userEmail;

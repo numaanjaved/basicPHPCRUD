@@ -2,6 +2,7 @@
 require_once('Assets/models/otp.php');
 require_once('Assets/models/destroy.php');
 require_once('Assets/models/store.php');
+require_once('Assets/models/update.php');
 
 
 $firstDigit = $_POST['dig1'];
@@ -29,8 +30,13 @@ if (validateOtp($mailCode)) {
         unset($_SESSION['RequestMode']);
         unset($_SESSION['userData']);
     }
-    // if ($_SESSION['RequestMode'] === 'Update') {
-    // }
+    if (isset($_SESSION['RequestMode']) && ($_SESSION['RequestMode'] === 'Update')) {
+        $dataArray = $_SESSION['userData'];
+        extract($dataArray);
+        update($userId, $imageName, $imagePath, $firstName, $lastName, $userEmail, $userContact, $userAddress, $userBio, $userType);
+        unset($_SESSION['RequestMode']);
+        unset($_SESSION['userData']);
+    }
     if (isset($_SESSION['destroyData'])) {
         $path = $_SESSION['destroyData']['path'];
         destroy($_SESSION['userId'], $path);
