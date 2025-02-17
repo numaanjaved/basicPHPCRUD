@@ -4,9 +4,7 @@ views("partials/head.php");
 $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/create' ? views("partials/navbar.php") : '';
 
 $defaultImage = 'Assets/images/default_profile.png';
-$profileImage = !empty($_SESSION['uploadedPicturePath']) && file_exists($_SESSION['uploadedPicturePath'])
-    ? htmlspecialchars($_SESSION['uploadedPicturePath'])
-    : $defaultImage;
+$profileImage = !empty($_SESSION['uploadedPicturePath']) && file_exists($_SESSION['uploadedPicturePath']) ? htmlspecialchars($_SESSION['uploadedPicturePath']) : $defaultImage;
 ?>
 
 <main class="main">

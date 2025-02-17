@@ -13,14 +13,17 @@ class Validate
     protected $errors = [];
     public function imageValidator($imageName, $errFor)
     {
+
         $fileTempName = '';
         $uploadDir = '';
         $validationCheck = true;
-        if (!isset($_SESSION['uploadedPicturePath']) || $_SESSION['uploadedPicturePath']  === '') {
+        if (!isset($_SESSION['uploadedPicture'])) {
             if (isset($_FILES[$imageName]) && !empty($_FILES[$imageName]['name']) && !empty($_FILES[$imageName]['size'])) {
+                $_SESSION['uploadedPicture'] = $_FILES[$imageName];
                 $fileName = $_FILES[$imageName]['name'];
                 $fileTempName = $_FILES[$imageName]['tmp_name'];
                 $uploadDir = 'uploads/' . $fileName;
+                $_SESSION['uploadedPicturePath'] = $uploadDir;
                 move_uploaded_file($fileTempName, $uploadDir);
             } else {
                 $this->errors[] = [
@@ -30,6 +33,12 @@ class Validate
                 $_SESSION['errors'] = $this->errors;
                 $validationCheck = false;
             }
+        } else {
+            $fileName = $_SESSION['uploadedPicture']['name'];
+            $fileTempName = $_SESSION['uploadedPicture']['tmp_name'];
+            $uploadDir = 'uploads/' . $fileName;
+            $_SESSION['uploadedPicturePath'] = $uploadDir;
+            move_uploaded_file($fileTempName, $uploadDir);
         }
         return [
             'validationCheck' => $validationCheck,

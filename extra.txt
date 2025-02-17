@@ -1,0 +1,79 @@
+public function imageValidator($imageName, $errFor)
+    {
+
+        $fileTempName = '';
+        $uploadDir = '';
+        $validationCheck = true;
+        dd($_SESSION['uploadedPicture'] === null);
+        dd(!isset($_SESSION['uploadedPicturePath']));
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        if (!isset($_SESSION['uploadedPicture']) || $_SESSION['uploadedPicture']  === null) {
+            echo 'inside ';
+            if (isset($_FILES[$imageName]) && !empty($_FILES[$imageName]['name']) && !empty($_FILES[$imageName]['size'])) {
+                $_SESSION['uploadedPicture'] = $_FILES[$imageName];
+                $fileName = $_FILES[$imageName]['name'];
+                $fileTempName = $_FILES[$imageName]['tmp_name'];
+                $uploadDir = 'uploads/' . $fileName;
+                $_SESSION['uploadedPicturePath'] = $uploadDir;
+
+                dd($uploadDir);
+                dd($_FILES[$imageName]);
+                echo 'Here is file in Upper block';
+                dd($_SESSION['uploadedPicturePath']);
+
+
+
+                move_uploaded_file($fileTempName, $uploadDir);
+            } else {
+                echo 'Error in upper';
+                $this->errors[] = [
+                    'attrName' => $errFor,
+                    'errMsg' => "Please Upload Profile Picture."
+                ];
+                $_SESSION['errors'] = $this->errors;
+                $validationCheck = false;
+            }
+        } else {
+
+            dd($_FILES[$imageName]);
+            echo 'Here is file in lower block';
+            dd($_SESSION['uploadedPicturePath']);
+            if (isset($_SESSION['uploadedPicture']) && !empty($_SESSION['uploadedPicture']['name']) && !empty($_SESSION['uploadedPicture']['size'])) {
+                $fileName = $_SESSION['uploadedPicture']['name'];
+                $fileTempName = $_SESSION['uploadedPicture']['tmp_name'];
+                $uploadDir = 'uploads/' . $fileName;
+                $_SESSION['uploadedPicturePath'] = $uploadDir;
+
+
+
+
+
+                dd($_FILES[$imageName]);
+                echo 'Here is file in lower block2';
+                dd($_SESSION['uploadedPicturePath']);
+
+
+                move_uploaded_file($fileTempName, $uploadDir);
+            } else {
+                echo 'Error in lower';
+                $this->errors[] = [
+                    'attrName' => $errFor,
+                    'errMsg' => "Please Upload Profile Picture."
+                ];
+                $_SESSION['errors'] = $this->errors;
+                $validationCheck = false;
+            }
+        }
+        die();
+        return [
+            'validationCheck' => $validationCheck,
+            'imageName' => $fileTempName,
+            'imagePath' => $uploadDir
+        ];
+    }

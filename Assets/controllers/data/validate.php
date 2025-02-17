@@ -58,7 +58,7 @@ function Validate($validation, $image, $firstName, $lastName, $email, $contact, 
 }
 
 if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $address, $bio, $userType, $adminName, $adminPassword)) {
-    $imageName = isset($_SESSION['uploadedPictureName']) ?  $_SESSION['uploadedPictureName'] : $validation->imageValidator('image', 'User Picture')['imageName'];
+    $imageName = isset($_SESSION['uploadedPicture']["name"]) ?  $_SESSION['uploadedPicture']["name"] : $validation->imageValidator('image', 'User Picture')['imageName'];
     $imagePath = isset($_SESSION['uploadedPicturePath']) ? $_SESSION['uploadedPicturePath'] : $validation->imageValidator('image', 'User Picture')['imagePath'];
     $userId = (string)newId();
     store($userId, $imageName, $imagePath, $firstName, $lastName, $email, $contact, $address, $bio, $userType, $adminName, $adminPassword, $otp);
@@ -66,16 +66,16 @@ if (Validate($validation, $image, $firstName, $lastName, $email, $contact,   $ad
     $_SESSION['userId'] = $userId;
     $_SESSION['otpEmail'] = $email;
     unset($_SESSION['inputs']);
+    unset($_SESSION['uploadedPicture']);
     unset($_SESSION['uploadedPicturePath']);
-    unset($_SESSION['uploadedPictureName']);
     header('location: /basicPHPCRUD/otp');
     exit();
 } else {
     if (!isset($_SESSION['uploadedPicturePath']) || $_SESSION['uploadedPicturePath'] === '') {
-        $_SESSION['uploadedPicturePath'] = $validation->imageValidator('image', 'User Picture')['imagePath'];
+        $_SESSION['uploadedPicturePath'] = $validation->imageValidator('image', 'User Picture')['uploadedPicturePath'];
     }
-    if (!isset($_SESSION['uploadedPictureName']) ||   $_SESSION['uploadedPictureName'] === '') {
-        $_SESSION['uploadedPictureName'] = $validation->imageValidator('image', 'User Picture')['imageName'];
+    if (!isset($_SESSION['uploadedPicture']["name"]) ||   $_SESSION['uploadedPicture']["name"] === '') {
+        $_SESSION['uploadedPictureName']["name"] = $validation->imageValidator('image', 'User Picture')['imageName'];
     }
     $_SESSION['inputs'] = [
         'firstName' =>  $firstName,
