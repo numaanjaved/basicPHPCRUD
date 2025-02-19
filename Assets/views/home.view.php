@@ -5,9 +5,6 @@ require('Assets/models/store.php');
 ?>
 
 <main class="main">
-    <div class=" py-2 px-5 profiles_main_container d-flex flex-column align-items-center bg-body-tertiary">
-        <h5 class="text text-info fs-1 w-100 text-center bg-dark rounded py-3 fw-regular">Click <span class="text-success">'Read'</span> to view profile details.</h5>
-    </div>
     <section class="user_data_section w-100 d-flex justify-content-center align-items-center">
         <div class="user_data_main_container w-100 d-flex flex-column justify-content-center align-items-center">
             <h1 class="user_data_section_heading w-100 d-flex justify-content-center align-items-center  flex-row">
