@@ -5,6 +5,8 @@ if ($_POST['request'] === 'Read') {
     exit();
 } elseif ($_POST['request'] === 'Update') {
     dd(' Update request ');
+    exit();
 } elseif ($_POST['request'] === 'Delete') {
-    dd(' Delete request ');
+    require_once('Assets/controllers/data/destroy.php');
+    exit();
 }

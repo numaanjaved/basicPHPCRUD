@@ -46,7 +46,7 @@ if (validateOtp($mailCode)) {
     unset($_SESSION['userId']);
     unset($_SESSION['otpError']);
     unset($_SESSION['otpEmail']);
-    header('location: /basicPHPCRUD/read');
+    header('location: /basicPHPCRUD/home');
     exit;
 } else {
     header('location: /basicPHPCRUD/otp');
