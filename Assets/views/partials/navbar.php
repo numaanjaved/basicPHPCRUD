@@ -8,7 +8,6 @@
             <li><a href="/basicPHPCRUD/" class="nav-link px-3 <?= ($_SERVER['REQUEST_URI'] == '/basicPHPCRUD/' || $_SERVER['REQUEST_URI'] == '/basicPHPCRUD/home' ? 'activeLink' : 'navLinks'); ?>">Home</a></li>
             <li><a href="/basicPHPCRUD/create" class="nav-link px-3 <?= ($_SERVER['REQUEST_URI'] == '/basicPHPCRUD/create' ? 'activeLink' : 'navLinks'); ?>">Create</a></li>
             <li><a href="/basicPHPCRUD/update" class="nav-link px-3 <?= ($_SERVER['REQUEST_URI'] == '/basicPHPCRUD/update' ? 'activeLink' : 'navLinks'); ?>">Update</a></li>
-            <li><a href="/basicPHPCRUD/delete" class="nav-link px-3 <?= ($_SERVER['REQUEST_URI'] == '/basicPHPCRUD/delete' ? 'activeLink' : 'navLinks'); ?>">Delete</a></li>
         </ul>
         <button class="btn btn-danger logout_btn"> <a class="nav-link" href="/basicPHPCRUD/logout">Logout</a></button>
     </nav>

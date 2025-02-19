@@ -36,8 +36,6 @@
             echo "Home Page";
         } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/create') {
             echo "Create Profile";
-        } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/delete') {
-            echo "Delete Profile";
         } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/update') {
             echo "Update Profile";
         } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/login') {
