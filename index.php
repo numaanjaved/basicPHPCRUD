@@ -5,11 +5,7 @@ if (file_exists('Core/functions.php')) {
 } else {
     echo 'Functions File Not Found';
 }
-if (file_exists(basePath('Core/Router.php'))) {
-    require_once(basePath('Core/Router.php'));
-} else {
-    echo 'Router File Not Found';
-}
+loadFile('Router', basePath('Core/Router.php'));
 $router = new Core\Router();
 $routes = [];
 if (file_exists(basePath('routes.php'))) {
@@ -21,8 +17,4 @@ if (file_exists(basePath('routes.php'))) {
 $uri = rtrim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $method = $_SERVER['REQUEST_METHOD'];
 $router->route($uri, $method);
-if (file_exists(basePath('Assets/views/loading.php'))) {
-    require_once(basePath('Assets/views/loading.php'));
-} else {
-    echo 'Loading File Not Found';
-}
+loadFile('Loading Page', basePath('Assets/views/loading.php'));
