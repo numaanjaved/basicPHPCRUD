@@ -20,7 +20,7 @@ function loginValidate($username, $password)
 };
 
 if (loginValidate($username, $password)) {
-    sessionSet($username);
+    cookieSet($username);
     header('location: /basicPHPCRUD/');
     exit;
 } else {
