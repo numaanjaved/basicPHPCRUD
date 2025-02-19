@@ -1,8 +1,7 @@
 <?php
 require('Assets/controllers/sessions.php');
 require('Assets/models/admin.php');
-if (isset($_SESSION['username'])) {
-    sessionUnset();
+if (isset($_COOKIE['username'])) {
     header('location: /basicPHPCRUD/home');
     exit();
 } else {
