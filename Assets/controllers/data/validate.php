@@ -41,14 +41,13 @@ function Validate($validation, $image, $firstName, $lastName, $email, $contact, 
     if (!$validation->Validator($bio, 1, 300, '/^[a-zA-Z0-9\s.,!?"\'\-\(\)&\n]+$/', 'Bio')) {
         $validationCheck = false;
     }
-    if ($userType === 'Admin') {
-        if (!$validation->Validator($adminName, 1, 50, "/^[a-zA-Z0-9_]*$/", 'Admin Name')) {
-            $validationCheck = false;
-        }
-        if (!$validation->Validator($adminPassword, 7, 255, "/^[a-zA-Z0-9_#@.&$]*$/", 'Admin Password')) {
-            $validationCheck = false;
-        }
+    if (!$validation->Validator($adminName, 1, 50, "/^[a-zA-Z0-9_]*$/", 'Admin Name')) {
+        $validationCheck = false;
     }
+    if (!$validation->Validator($adminPassword, 7, 255, "/^[a-zA-Z0-9_#@.&$]*$/", 'Admin Password')) {
+        $validationCheck = false;
+    }
+
     if ($userType === 'Admin' && $validation->adminValidator('Existing Admin')) {
         $validationCheck = false;
     }
