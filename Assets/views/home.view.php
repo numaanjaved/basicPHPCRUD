@@ -7,10 +7,14 @@ require('Assets/models/store.php');
 <main class="main">
     <section class="user_data_section w-100 d-flex justify-content-center align-items-center">
         <div class="user_data_main_container w-100 d-flex flex-column justify-content-center align-items-center">
-            <h1 class="user_data_section_heading w-100 d-flex justify-content-center align-items-center  flex-row">
-                Profiles</h1>
-            <div
-                class="user_data_display_container w-100 d-flex justify-content-center align-items-center flex-column">
+            <div class="w-100 user_data_section_heading d-flex justify-content-evenly">
+                <h1 class="user_data_section_heading w-75 d-flex justify-content-center align-items-center  flex-row">Profiles</h1>
+                <form method="POST" class="me-5">
+                    <input type="hidden" name="request" value="Create">
+                    <button class="btn px-5 btn-dark fs-2 me-5" type="submit">Add Profile&nbsp;<i class="fa-solid fa-user-plus"></i></button>
+                </form>
+            </div>
+            <div class="user_data_display_container w-100 d-flex justify-content-center align-items-center flex-column">
                 <div class="data_headings_container w-100 d-flex justify-content-between flex-row">
                     <div class="text_container d-flex justify-content-evenly align-items-center">
                         <h4 class="data_heading">Picture</h4>
@@ -25,7 +29,6 @@ require('Assets/models/store.php');
                 <div class="individual_user_data_container position-relative w-100 d-flex justify-content-start flex-column align-items-center">
                     <?php if (is_array(fetchAll())): ?>
                         <?php foreach (fetchAll() as  $record):  ?>
-
                             <div class="individual_user_data w-100 d-flex justify-content-between align-items-center">
                                 <div class="text_record d-flex justify-content-evenly align-items-center">
                                     <div class="user_profile_data d-flex justify-content-center align-items-center">

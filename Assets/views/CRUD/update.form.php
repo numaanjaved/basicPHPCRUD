@@ -1,7 +1,6 @@
 <?php
 views("partials/head.php");
 views("partials/navbar.php");
-// dd($_SERVER['REQUEST_URI']);
 ?>
 <main class="main">
     <div class="notifications_container d-flex flex-column gap-2">
