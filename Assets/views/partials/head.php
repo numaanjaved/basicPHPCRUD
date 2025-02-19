@@ -34,8 +34,6 @@
         <?php
         if ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/' || $_SERVER['REQUEST_URI'] === '/basicPHPCRUD/home') {
             echo "Home Page";
-        } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/read') {
-            echo "Profiles Record";
         } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/create') {
             echo "Create Profile";
         } elseif ($_SERVER['REQUEST_URI'] === '/basicPHPCRUD/delete') {
