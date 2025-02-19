@@ -23,7 +23,7 @@ views('partials/navbar.php');
                 <span style="white-space: pre-line;" class="first_name fs-3 fw-regular w-100 mb-3"><?= $bio ?></span>
             </div>
         </div>
-        <button class="mt-5 btn w-25 btn-danger fw-semibold fs-3"><a class="nav-link" href="/basicPHPCRUD/read">Close</a></button>
+        <button class="mt-5 btn w-25 btn-danger fw-semibold fs-3"><a class="nav-link" href="/basicPHPCRUD/home">Close</a></button>
     </div>
 </div>
 <?php
