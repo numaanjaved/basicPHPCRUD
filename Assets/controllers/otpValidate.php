@@ -3,7 +3,7 @@ require_once('Assets/models/otp.php');
 require_once('Assets/models/destroy.php');
 require_once('Assets/models/store.php');
 require_once('Assets/models/update.php');
-
+require_once('Assets/controllers/updateCookies.php');
 
 $firstDigit = $_POST['dig1'];
 $secondDigit = $_POST['dig2'];
@@ -34,6 +34,7 @@ if (validateOtp($mailCode)) {
         $dataArray = $_SESSION['userData'];
         extract($dataArray);
         update($userId, $imageName, $imagePath, $firstName, $lastName, $userEmail, $userContact, $userAddress, $userBio, $userType);
+        updateCookies($userId);
         unset($_SESSION['RequestMode']);
         unset($_SESSION['userData']);
     }
