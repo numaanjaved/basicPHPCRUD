@@ -126,7 +126,7 @@ class Validate
             ];
             $validationCheck = false;
         }
-        if (!$this->adminCreMatch($username, $password)) {
+        if (!$this->loginCreMatch($username, $password)) {
             $validationCheck = false;
             $this->errors[] = [
                 'attrName' => 'Invalid',
@@ -136,14 +136,14 @@ class Validate
         $_SESSION['errors'] = $this->errors;
         return $validationCheck;
     }
-    protected function adminCreMatch($username, $password)
+    protected function loginCreMatch($username, $password)
     {
-        $credentials = adminCre();
+        $credentials = loginCre($username);
         $validationCheck = true;
-        if ($username !== $credentials['adminName']) {
+        if ($username !== $credentials['admin_name']) {
             $validationCheck = false;
         }
-        if (!password_verify($password, $credentials['adminPassword'])) {
+        if (!password_verify($password, $credentials['admin_password'])) {
             $validationCheck = false;
         }
         return $validationCheck;
