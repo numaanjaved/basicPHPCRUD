@@ -171,7 +171,7 @@
           > .user_type_container {
             margin-top: 1rem;
             & .admin_heading {
-              display: none;
+              /* display: none; */
               font-family: "poppins", sans-serif;
               font-weight: 400;
               font-size: 1.7rem;
@@ -179,7 +179,7 @@
               margin-bottom: 1.5rem;
             }
             & .admin_attr_container {
-              display: none;
+              display: flex;
             }
             & .admin_label {
               font-family: "poppins", sans-serif;

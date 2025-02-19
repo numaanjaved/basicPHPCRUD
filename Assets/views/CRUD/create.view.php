@@ -90,7 +90,7 @@ $profileImage = !empty($_SESSION['uploadedPicturePath']) && file_exists($_SESSIO
                                 class="user_type_sub_container w-100 d-flex justify-content-evenly align-items-start flex-column">
                                 <div
                                     class="choose_user_container w-100 d-flex justify-content-center align-items-start flex-column">
-                                    <h3 class="admin_heading">User Name and Password for Admin
+                                    <h3 class="admin_heading">User Name and Password for Profile
                                     </h3>
                                     <div class="admin_attr_container flex-column w-100">
                                         <label class="admin_label" for="admin_name_input">Username</label>
