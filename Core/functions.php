@@ -28,6 +28,6 @@ function loadFile($fileName, $filePath)
     if (file_exists($filePath)) {
         require_once($filePath);
     } else {
-        echo $fileName . ' ' . 'File Not Found';
+        echo $fileName . ' File Not Found';
     }
 }
