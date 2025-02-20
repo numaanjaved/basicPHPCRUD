@@ -3,8 +3,21 @@ views("partials/head.php");
 views("partials/navbar.php");
 require('Assets/models/store.php');
 ?>
-
 <main class="main">
+    <div class="notifications_container d-flex flex-column gap-2">
+        <div class="errors_container d-flex flex-column gap-2"></div>
+        <?php if (isset($_SESSION['authError'])): ?>
+
+            <div class="err_notification_container" id="errNotificationContainer">
+                <div class="err_text_container errorCustom errTextCont">
+                    <h3 class="notification_err_heading"><?= $_SESSION['authError'] ?></h3>
+                    <button class="err_notification_close_btn" id="errNotificationCloseBtn" type="button"><i class="fa-solid fa-circle-xmark"></i></button>
+                </div>
+            </div>
+            <?php unset($_SESSION['authError']); ?>
+        <?php endif; ?>
+
+    </div>
     <section class="user_data_section w-100 d-flex justify-content-center align-items-center">
         <div class="user_data_main_container w-100 d-flex flex-column justify-content-center align-items-center">
             <div class="w-100 user_data_section_heading d-flex justify-content-evenly">
