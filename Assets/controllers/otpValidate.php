@@ -45,6 +45,9 @@ if (validateOtp($mailCode)) {
         $path = $_SESSION['destroyData']['path'];
         destroy($_SESSION['userId'], $path);
         unset($_SESSION['destroyData']);
+        if (getLoggedInUser()['user_id'] === $_SESSION['userId']) {
+            require_once('Assets/controllers/logout.php');
+        }
     }
     removeOTP($_SESSION['userId']);
     unset($_SESSION['userId']);
