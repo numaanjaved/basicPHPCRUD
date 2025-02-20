@@ -12,7 +12,6 @@ if (getLoggedInUser()['user_type'] === 'admin') {
         views('CRUD/update.form.php', ['profId' => $profId, 'record' => $record]);
         exit();
     } else {
-        dd('Hello');
         $_SESSION['authError'] = 'You are not authorized to perform this action';
         header('location: /basicPHPCRUD/home');
         die();
